@@ -1,0 +1,176 @@
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="/admin" class="brand-wrap">
+            <h4>FashionFusion</h4>
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-users"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/order-page"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addCategories"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Add Items</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/addCategories">Create Categories</a>
+                    <a href="/admin/addCoupon">Create Coupon</a>
+                    <a href="/admin/banner-creation">Create Banner</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/sales-report"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Sales Report</span> </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+<header class="main-wrap main-header navbar">
+    <div class="col-search">
+        <form class="searchform">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Shirts">
+                <option value="Pants">
+                <option value="Bags">
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                class="material-icons md-apps"></i> </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="#">
+                    <i class="material-icons md-notifications animation-shake"></i>
+                    <span class="badge rounded-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false"> <img class="img-xs rounded-circle"
+                        src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/admin/admin-logout"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="main-wrap" style="background-color: #fff;">
+    <div class="col-12 d-flex justify-content-center ">
+        <div class="col-lg-8  mt-30 pt-5 pb-5" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div>
+                {{#if couponData}}
+                {{#with couponData}}
+                <h3>Edit Coupon</h3>
+            </div>
+            <form id="edit-coupon-form">
+                <div class="form-group">
+                    <label for="discountAmount">Discount Percentage:</label>
+                    <input type="number" class="form-control" value="{{discountPercentage}}" id="discountAmount"
+                        name="discountPercentage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input value="{{dateFormat expiryDate}}" type="text" class="form-control" id="expiryDate"
+                        name="expiryDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="minimumPurchaseAmount">Minimum Purchase Amount:</label>
+                    <input type="number" class="form-control" value="{{minimumPurchaseAmount}}"
+                        id="minimumPurchaseAmount" name="minimumPurchaseAmount" required>
+                </div>
+                <input type="hidden" name="couponId" value="{{_id}}">
+                <div class="form-group">
+                    <label for="userLimitation">User Limitation:</label>
+                    <input type="number" class="form-control" value="{{userLimitation}}" id="userLimitation"
+                        name="userLimitation" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Coupon</button>
+            </form>
+            {{/with}}
+            {{/if}}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $("#edit-coupon-form").submit((e) => {
+        e.preventDefault();
+
+        $.ajax({
+            url: "edit-coupon",
+            method: "patch",
+            data: $("#edit-coupon-form").serialize(),
+            success: (response) => {
+                if (response.status) {
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Coupon Changed",
+                    }).then(()=>{
+                        location.reload();
+                    })
+                }
+            }
+
+        })
+    })
+</script>

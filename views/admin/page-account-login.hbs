@@ -1,0 +1,169 @@
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    {{!--
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    --}}
+</head>
+
+<body>
+    <style>
+        .form__group {
+            position: relative;
+            padding: 20px 0 0;
+            width: 100%;
+            max-width: 180px;
+        }
+
+        .form__field {
+            font-family: inherit;
+            width: 250px;
+            margin-left: 10px;
+            border: none;
+            border-bottom: 2px solid #9b9b9b;
+            outline: 0;
+            font-size: 15px;
+            color: #9b9b9b;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+
+        .form__field::placeholder {
+            color: transparent;
+
+        }
+
+        .form__field:placeholder-shown~.form__label {
+            font-size: 13px;
+            cursor: text;
+            margin-left: 10px;
+            top: 20px;
+        }
+
+        .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 17px;
+            color: #9b9b9b;
+            pointer-events: none;
+        }
+
+        .form__field:focus {
+            padding-bottom: 6px;
+            font-weight: 500;
+            border-width: 3px;
+            border-image: linear-gradient(to right, #116399, #38caef);
+            border-image-slice: 1;
+        }
+
+        .form__field:focus~.form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 14px;
+            color: #38caef;
+            font-weight: 500;
+        }
+
+        /* reset input */
+        .form__field:required,
+        .form__field:invalid {
+            box-shadow: none;
+        }
+    </style>
+
+
+    <section class="content-main mt-80 mb-80">
+        <div class="card mx-auto card-login">
+            <div class="card-body">
+                {{#if message}}
+                <div class="alert alert-warning fs-6 alert-dismissible fade show text-center mx-auto" role="alert">
+                    <strong>{{message.message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
+                {{/if}}
+                <h4 class="card-title mb-4">Sign in</h4>
+                <form method="post" action="/admin/login">
+                    <div class="mb-3 form__group">
+                        <input class="form-control form__field" name="username" placeholder="Username or email"
+                            type="text">
+                        <label class="form__label">Username or email</label>
+                    </div> <!-- form-group// -->
+                    <div class="mb-3 form__group">
+                        <input class="form-control form__field" name="password" placeholder="Password" type="password">
+                        <label class="form__label">Password</label>
+                    </div> <!-- form-group// -->
+                    <div class="mb-3">
+                        <a href="#" class="float-end font-sm text-muted">Forgot password?</a>
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input" checked="">
+                            <span class="form-check-label">Remember</span>
+                        </label>
+                    </div> <!-- form-group form-check .// -->
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-primary w-100"> Login </button>
+                    </div> <!-- form-group// -->
+                </form>
+            </div>
+            <p class="text-center mb-4">Don't have account? <a href="#">Sign up</a></p>
+        </div>
+        </div>
+    </section>
+    <footer class="main-footer font-xs">
+        <div class="row pb-30 pt-15">
+            <div class="col-sm-6">
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> ©, FasionFusion.
+            </div>
+        </div>
+    </footer>
+    </main>
+    <script src="/admin-assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="/admin-assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/plugins/slick.js"></script>
+    <script src="/admin-assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="/admin-assets/js/plugins/wow.js"></script>
+    <script src="/admin-assets/js/plugins/jquery-ui.js"></script>
+    <script src="/admin-assets/js/plugins/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/plugins/magnific-popup.js"></script>
+    <script src="/admin-assets/js/plugins/select2.min.js"></script>
+    <script src="/admin-assets/js/plugins/waypoints.js"></script>
+    <script src="/admin-assets/js/plugins/counterup.js"></script>
+    <script src="/admin-assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="/admin-assets/js/plugins/images-loaded.js"></script>
+    <script src="/admin-assets/js/plugins/isotope.js"></script>
+    <script src="/admin-assets/js/plugins/scrollup.js"></script>
+    <script src="/admin-assets/js/plugins/jquery.vticker-min.js"></script>
+    <script src="/admin-assets/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="/admin-assets/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="/admin-assets/js/main.js"></script>
+    <script src="/admin-assets/js/shop.js"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-account-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:33 GMT -->
+
+</html>

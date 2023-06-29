@@ -1,0 +1,333 @@
+<style>
+    /* Custom CSS for the section */
+    section {
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Custom CSS for the form */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Custom CSS for the form fields */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    /* Custom CSS for the "Add Category" button */
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    /* Custom CSS for the list group */
+    .list-group {
+        margin-top: 20px;
+    }
+
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Custom CSS for the delete button */
+    .btn-light {
+        color: #333;
+        background-color: #f8f8f8;
+        border-color: #ccc;
+    }
+
+    .btn-light:hover {
+        background-color: #e2e2e2;
+    }
+
+    /* Additional custom CSS styles as per your requirements */
+    /* Add your custom CSS styles here */
+</style>
+
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="/admin" class="brand-wrap">
+            <h4>FashionFusion</h4>
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-users"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/order-page"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addCategories"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Add Items</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/addCategories">Create Categories</a>
+                    <a href="/admin/addCoupon">Create Coupon</a>
+                    <a href="/admin/banner-creation">Create Banner</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/sales-report"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Sales Report</span> </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+<header class="main-wrap main-header navbar">
+    <div class="col-search">
+        <form class="searchform">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Shirts">
+                <option value="Pants">
+                <option value="Bags">
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                class="material-icons md-apps"></i> </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="#">
+                    <i class="material-icons md-notifications animation-shake"></i>
+                    <span class="badge rounded-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false"> <img class="img-xs rounded-circle"
+                        src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/admin/admin-logout"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<main class="main-wrap mt-40" style="background-color: #ffff;">
+    <section>
+        <div class="row ">
+            <div class="col-7 d-flex justify-content-center align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <form id="bannerCretionFrom" class="mb-3" enctype="multipart/form-data">
+                    <h3 class="text-center">Add Banner</h3>
+                    {{#if message}}
+                    <div class="alert alert-warning alert-dismissible fade show text-center mx-auto" role="alert">
+                        <strong>{{message.message}}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {{/if}}
+                    <div class="form-group mb-4">
+                        <label class="form-label" for="category_name">Title</label>
+                        <input type="text" placeholder="Title" name="banner-title" class="form-control"
+                            id="banner-title">
+
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Add thumbnail </label>
+                        <input class="form-control" name="banner-image" type="file" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label" for="banner-description">Description</label>
+                        <input type="text" placeholder="banner-description" name="banner-description"
+                            class="form-control" id="banner-description">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label" for="banner-link">Link </label>
+                        <input type="text" placeholder="Enter the link URL" name="banner-link" class="form-control"
+                            id="banner-link">
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <input type="submit" class="btn btn-success my-3 me-5" value="Add banner">
+                    </div>
+                </form>
+            </div>
+            <div class="col-5">
+                <div id="banner-preview" class="img-thumbnail">
+                </div>
+            </div>
+        </div>
+        {{!-- <table class="table tabel-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Options</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {{#each category}}
+                <tr>
+                    <td><img src="/thumbnails/{{this.thumbnail}}" width="60" height="60"></td>
+                    <td><b>{{this.category_name}}</b></td>
+                    <td> <a href="/admin/delete-category?id={{this._id}}">
+                            <button type="submit" class="btn btn-sm font-sm d-flex align-items-center btn-light rounded"
+                                onclick="return confirm('Do you want to delete {{this.category_name}}')">
+                                <i class="material-icons md-delete_forever mr-2"></i>
+                                Delete
+                            </button>
+                        </a></td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table> --}}
+
+
+
+        {{!-- <div class="mt-10">
+            {{#if category}}
+            <ul class="list-group">
+                {{#each category}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{this.category_name}}
+                    <a href="/admin/delete-category?id={{this._id}}">
+                        <button type="submit" class="btn btn-sm font-sm d-flex align-items-center btn-light rounded"
+                            onclick="return confirm('Do you want to delete {{this.category_name}}')">
+                            <i class="material-icons md-delete_forever mr-2"></i>
+                            Delete
+                        </button>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div> --}}
+    </section>
+</main>
+<footer class="main-footer text-center">
+    <p class="font-xs">
+        <script>
+            document.write(new Date().getFullYear())
+        </script> ©, FasionFusion.
+    </p>
+    <p class="font-xs mb-30">All rights reserved</p>
+</footer>
+<script>
+    function previewImages() {
+        const previewContainer = document.getElementById('banner-preview');
+        const fieldInput = document.querySelector('input[name="banner-image"]'); // Update the selector
+        const files = fieldInput.files;
+
+        previewContainer.innerHTML = ''; // Clear previous previews
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const img = document.createElement('img');
+                img.src = event.target.result;
+                img.classList.add('preview-image');
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+    // Call the previewImages function whenever the file input changes
+    document.querySelector('input[name="banner-image"]').addEventListener('change', previewImages); // Update the selector
+
+
+    $("#bannerCretionFrom").submit((e) => {
+
+        e.preventDefault();
+        const form = document.getElementById("bannerCretionFrom");
+        const formData = new FormData(form);
+
+        $.ajax({
+            url: "/admin/banner-creation",
+            method: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (response) => {
+                if (response.status) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Banner added successfully",
+                    }).then(()=>{
+                        location.reload()
+                    })
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("Error:", error);
+            }
+        })
+    })
+</script>

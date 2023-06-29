@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+
+}
+
+/*----------bootstrap-navbar-css------------*/
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Added to center align the search bar */
+  margin-bottom: 20px; /* Added margin for spacing */
+}
+
+.search-bar form {
+  position: relative;
+}
+
+.search-bar input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  width: 250px; /* Adjust the width as desired */
+  font-size: 14px; /* Adjust the font size as desired */
+}
+
+.search-bar button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-bar button i {
+  color: #555; /* Adjust the color of the search icon */
+}

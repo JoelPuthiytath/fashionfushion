@@ -1,0 +1,57 @@
+﻿
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="/" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Wishlist
+                </div>
+            </div>
+        </div>
+        <section class="mt-40 mb-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 p-3">
+                        {{#if wishlistItems}}
+                         <div class="table-responsive" style="max-height: 60vh; overflow-y: auto;">
+                            <table class="table shopping-summery text-center">
+                                <thead>
+                                    <tr class="main-heading">
+                                        <th scope="col" colspan="2">Product</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Action</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each wishlistItems.productId}}
+                                    <tr>
+                                        <td class="image product-thumbnail"><img src="/uploads/{{this.cover_photo}}" alt="#"></td>
+                                        <td class="product-des product-name">
+                                            <h6 class="product-name"><a href="#">{{this.product_name}}</a></h6>
+                                            <p class="font-xs">{{this.product_description}}</p>
+                                        </td>
+                                        <td class="price" data-title="Price"><span>₹ {{this.deal_price}}</span></td>
+                                        <td class="text-right" data-title="Cart">
+                                            <button onclick="addToCart('{{this._id}}')" class="btn btn-sm btn-outline-info"><i class="fi-rs-shopping-bag mr-2"></i>Add to cart</button>
+                                        </td>
+                                        <td class="action" data-title="Remove"><a onclick="removeFromWishlist('{{../wishlistItems._id}}','{{this._id}}')"><i class="fi-rs-trash"></i></a></td>
+                                        
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="text-center mt-40 mb-40">
+                        <h4>There is no products in wishlist</h4>
+                        <a href="/shop" class="btn btn-info mt-10"> Go to Shop</a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+    </main>

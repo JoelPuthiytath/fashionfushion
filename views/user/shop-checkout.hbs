@@ -1,0 +1,524 @@
+﻿<body>
+    <!-- desktop menu -->
+    <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="my-logo">
+                    <h5>Frankenstein</h5>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <nav>
+                        <ul class="mobile-menu">
+                            <li>
+                                <a href="/">HOME</a>
+                            </li>
+                            <li>
+                                <a href="/mens">MEN</a>
+                            </li>
+                            <li>
+                                <a href="/womens">WOMEN</a>
+                            </li>
+                            <li>
+                                <a href="/kids">KIDS</a>
+                            </li>
+                            <li>
+                                <a href="/login">MY ACCOUNT</a>
+
+                            </li>
+                            <li>
+                                <a href="/login">CART</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- mobile menu end -->
+                </div>
+                <div class="mobile-header-info-wrap mobile-header-border">
+                    <div class="single-mobile-header-info">
+                        <a href="/user-login">Log In</a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="/user-signup">Sign Up</a>
+                    </div>
+                </div>
+                <div class="mobile-social-icon">
+                    <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+             
+    </div>
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="/" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Checkout
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    {{!-- <div class="col-lg-6 mb-sm-15">
+                        <div class="toggle_info">
+                            <span><i class="fi-rs-user mr-10"></i><span class="text-muted">Already have an
+                                    account?</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed"
+                                    aria-expanded="false">Click here to login</a></span>
+                        </div>
+                        <div class="panel-collapse collapse login_form" id="loginform">
+                            <div class="panel-body">
+                                <p class="mb-30 font-sm">If you have shopped with us before, please enter your details
+                                    below. If you are a new customer, please proceed to the Billing &amp; Shipping
+                                    section.</p>
+                                <form method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="email" placeholder="Username Or Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" placeholder="Password">
+                                    </div>
+                                    <div class="login_footer form-group">
+                                        <div class="chek-form">
+                                            <div class="custome-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="checkbox"
+                                                    id="remember" value="">
+                                                <label class="form-check-label" for="remember"><span>Remember
+                                                        me</span></label>
+                                            </div>
+                                        </div>
+                                        <a href="#">Forgot password?</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-md" name="login">Log in</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> --}}
+                    <div class="col-lg-6">
+
+                        <div class="toggle_info">
+                            <span><i class="fi-rs-label mr-10"></i><span class="text-muted">Have a
+                                    coupon?</span> <a href="#coupon" data-bs-toggle="collapse" class="collapsed"
+                                    aria-expanded="false">Click here to enter your code</a></span>
+                        </div>
+                        <div class="panel-collapse collapse coupon_form " id="coupon">
+                            <div class="panel-body">
+                                <p class="mb-30 font-sm">If you have a coupon code, please apply it below.</p>
+                                <form id="coupon-selector-form">
+                                    <div class="form-group">
+                                        <input type="text" name="selectedCoupon" id="selectedCoupon"
+                                            placeholder="Enter Coupon Code...">
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn  btn-md" name="login">Apply Coupon</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="divider mt-50 mb-50"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 delivery-address-selector">
+                        <h3 class="mb-4">Delivery Address</h3>
+                        <form id="address-form">
+                            {{#if shippingAddress}}
+                            {{#each shippingAddress}}
+                            <ul class="list-group" style="overflow-y:auto">
+                                {{#each address}}
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="address" id="address{{_id}}"
+                                            value="{{_id}}" >
+                                        <label class="form-check-label" for="address{{_id}}">
+                                            <span class="font-weight-bold">{{name}}</span> <span
+                                                class="ml-3">{{phoneNumber}}</span><br>
+                                            <span class="address-line">{{street_address}}</span>
+                                            <span class="address-line">{{city}}, {{state}}</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                            {{/each}}
+                            {{else}}
+                            <p>There is No saved Address</p>
+                            {{/if}}
+                        </form>
+
+
+                        {{!-- <button class="btn btn-primary add-address-btn mt-4" data-toggle="collapse"
+                            data-target="#billing-details">Add New Address</button> --}}
+                        <a href="#billing-details" data-bs-toggle="collapse"
+                            class="collapsed btn btn-sm btn-primary mt-3 " aria-expanded="false">Add
+                            New Address</a>
+
+
+                        <div class="col-md-12 mt-3">
+                            <div id="billing-details" class="collapse">
+                                <div class="mb-25">
+                                    <h4>Billing Details</h4>
+                                </div>
+                                <form method="post" id="add-address-form">
+                                    <div class="form-group">
+                                        <input type="text" required="" name="name" placeholder="Name ">
+                                    </div>
+                                    <div class="form-group">
+                                        <input required="" type="text" name="email" placeholder="Email address ">
+                                    </div>
+                                    <div class="form-group">
+                                        <input required="" type="text" name="phone"
+                                            placeholder="10-digit mobile number">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom_select">
+                                            <select class="form-control select-active" name="state">
+                                                <option value="">Select an option...</option>
+                                                <option value="Andaman &amp; Nicobar Islands">Andaman &amp; Nicobar
+                                                    Islands
+                                                </option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Dadra &amp; Nagar Haveli &amp; Daman &amp; Diu">Dadra
+                                                    &amp; Nagar
+                                                    Haveli &amp; Daman &amp; Diu
+                                                </option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Ladakh">Ladakh</option>
+                                                <option value="Lakshadweep">Lakshadweep</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Odisha">Odisha</option>
+                                                <option value="Puducherry">Puducherry</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Telangana">Telangana</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttarakhand">Uttarakhand</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="West Bengal">West Bengal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="street_address" required=""
+                                            placeholder="Address (area and street)"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input required="" type="text" name="city"
+                                            placeholder="City / District / Town ">
+                                    </div>
+
+                                    <input type="text" value="{{user._id}}" name="userId" id="" hidden>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- ###########33 --}}
+                    <div class="col-md-6">
+                        <div class="order_review p-3">
+                            <div class="mb-20">
+                                <h4>Your Orders</h4>
+                            </div>
+                            <div class="table-responsive order_table text-center">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Product</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each cartProducts}}
+                                        <tr>
+                                            <td class="image product-thumbnail"><img
+                                                    src="/uploads/{{this.product.cover_photo}}" alt="#"></td>
+                                            <td>
+                                                <h6><a style="color:inherit; text-decoration:none"
+                                                        href="/product-view?id={{this.product._id}}">{{this.product.product_name}}</a>
+                                                </h6>
+                                                <span class="product-qty">x {{this.quantity}}</span>
+                                            </td>
+                                            <td>₹{{this.product.deal_price}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        <tr>
+                                            <th>SubTotal</th>
+                                            <td class="product-subtotal" colspan="2">₹{{total}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Shipping</th>
+                                            <td colspan="2"><em>Free Shipping</em></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Coupon Discount</th>
+                                            <td colspan="2" class="product-subtotal">₹ <span
+                                                    id="couponDiscount">0</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total</th>
+                                            <td colspan="2" class="product-subtotal">₹ <span
+                                                    class="font-xl text-brand fw-900" id="totalAmount"> {{total}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                            <div class="payment_method">
+                                <div class="mb-25">
+                                    <h5>Payment</h5>
+                                </div>
+                                <form method="post" id="checkout-form">
+                                    <div class="payment_option">
+                                        <div class="custome-radio">
+                                            {{!-- <input type="hidden" name="coupon" id="coupon"> --}}
+                                            <input type="hidden" name="selectedAddress" id="selectedAddress" value="">
+                                            <input type="text" value="{{user._id}}" name="userId" id="" hidden>
+                                            <input class="form-check-input" required="" type="radio"
+                                                name="payment_option" id="exampleRadios3" value="COD" checked="">
+                                            <label class="form-check-label" for="exampleRadios3"
+                                                data-bs-toggle="collapse" data-target="cashOnDelivery"
+                                                aria-controls="cashOnDelivery">Cash On
+                                                Delivery</label>
+                                            <div class="form-group collapse in" id="cashOnDelivery">
+                                                <p class="text-muted mt-5">There are many variations of passages of
+                                                    Lorem
+                                                    Ipsum available, but the majority have suffered alteration. </p>
+                                            </div>
+                                        </div>
+                                        <div class="custome-radio">
+                                            <input class="form-check-input" required="" type="radio"
+                                                name="payment_option" id="exampleRadios5" value="razorPay" checked="">
+                                            <label class="form-check-label" for="exampleRadios5"
+                                                data-bs-toggle="collapse" data-target="#razorPay"
+                                                aria-controls="razorPay">razorPay</label>
+                                            <div class="form-group collapse in" id="razorPay">
+                                                <p class="text-muted mt-5">Pay via razorPay; you can pay with your
+                                                    credit
+                                                    card
+                                                    if you don't have a razorPay account.</p>
+                                            </div>
+                                        </div>
+                                        <div class="custome-radio">
+                                            <input class="form-check-input" required="" type="radio"
+                                                name="payment_option" id="exampleRadios6" value="wallet" checked="">
+                                            <label class="form-check-label" for="exampleRadios6"
+                                                data-bs-toggle="collapse" data-target="#walletMoney"
+                                                aria-controls="walletMoney">Wallet</label>
+                                            <div class="form-group collapse in" id="walletMoney">
+                                                <p class="text-muted mt-5">Pay with wallet money.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-fill-out btn-block mt-30">Place Order</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{#if message}}
+
+                    <div class="error">
+                        <div class="error__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24"
+                                fill="none">
+                                <path fill="#393a37"
+                                    d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="error__title">{{message.message}}</div>
+                        <div class="error__close"><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20"
+                                height="20">
+                                <path fill="#393a37"
+                                    d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z">
+                                </path>
+                            </svg></div>
+                    </div>
+                    {{!-- <div class="alert alert-warning fs-6 alert-dismissible fade show text-center mx-auto"
+                        role="alert">
+                        <strong>{{message.message}}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div> --}}
+                    {{/if}}
+
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <h5 class="mb-5">Now Loading</h5>
+                    <div class="loader">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/javascripts/formSubmit.js"></script>
+
+
+    <script>
+
+
+        $("#add-address-form").submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: '/add-shopping-address',
+                method: 'post',
+                data: $("#add-address-form").serialize(),
+                success: (response) => {
+                    if (response.status) {
+                        location.reload()
+                    }
+                }
+            })
+
+        });
+
+        $("#coupon-selector-form").submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: "/select-coupon",
+                method: "post",
+                data: $("#coupon-selector-form").serialize(),
+                success: (response) => {
+                    console.log(response)
+                    Swal.fire({
+                        position: "center",
+                        icon: response.icon,
+                        title: response.message,
+                        showConfirmButton: false,
+                        timer: 2000,
+                    }).then(() => {
+                        document.getElementById("couponDiscount").innerHTML = response.couponDiscount;
+                        document.getElementById("totalAmount").innerHTML = response.totalAmount;
+                        //document.querySelector(".coupon_form").style.display = "block";
+
+                    })
+                },
+            });
+        });
+
+        var addressInputs = document.querySelectorAll('input[name="address"]');
+
+        addressInputs.forEach(function (input) {
+            input.addEventListener('click', function () {
+                var selectedAddress = input.value;
+                document.getElementById('selectedAddress').value = selectedAddress;
+            });
+        });
+
+        $(document).ready(function () {
+                
+            $('#checkout-form').submit(function (event) {
+                event.preventDefault();
+                greeting();
+            let address=document.getElementById('selectedAddress').value
+            console.log(address,"this is checking")
+
+                if (address === "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'select an address before Place order',
+                    })
+                return
+                }
+                let couponCodeArray = $("#selectedCoupon").val()
+                //let couponConde = couponCodeArray[1]
+                let formData = $(this).serializeArray();
+                formData.push({ name: "coupon", value: couponCodeArray })
+                console.log(formData)
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/place-order',
+                    data: formData,
+                    success: function (response) {
+                        if (response.COD) {
+                            console.log(response.orderId)
+                            location.href = `/order-success-page?id=${response.orderId}`;
+                        } else if (response.wallet === false) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.message,
+                            })
+                        } else if (response.wallet === true) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your order placed Sucessfuly',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                location.href = `/order-success-page?id=${response.orderId}`;
+                            })
+                        }
+                        else {
+                         
+                            razorpayPayment(response)
+                            console.log("i went")
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>

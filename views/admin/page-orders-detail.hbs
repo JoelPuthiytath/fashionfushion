@@ -1,0 +1,316 @@
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="/admin" class="brand-wrap">
+            <h4>FashionFusion</h4>
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-users"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/order-page"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addCategories"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Add Items</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/addCategories">Create Categories</a>
+                    <a href="/admin/addCoupon">Create Coupon</a>
+                    <a href="/admin/banner-creation">Create Banner</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/sales-report"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Sales Report</span> </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+<header class="main-wrap main-header navbar">
+    <div class="col-search">
+        <form class="searchform">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Shirts">
+                <option value="Pants">
+                <option value="Bags">
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                class="material-icons md-apps"></i> </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="#">
+                    <i class="material-icons md-notifications animation-shake"></i>
+                    <span class="badge rounded-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false"> <img class="img-xs rounded-circle"
+                        src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/admin/admin-logout"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+
+<main class="main-wrap">
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Order detail</h2>
+                <p>Details for Order ID: {{orderId}}</p>
+            </div>
+        </div>
+        <div class="card">
+            <header class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                        {{!-- <span>
+                            <i class="material-icons md-calendar_today"></i> <b>{{dateformat}}</b>
+                        </span> <br> --}}
+                        <small class="text-muted">Order ID: {{orderId}}</small>
+                    </div>
+                    {{!-- <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+                        <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
+                            <option>Change status</option>
+                            <option>Awaiting payment</option>
+                            <option>Confirmed</option>
+                            <option>Shipped</option>
+                            <option>Delivered</option>
+                        </select>
+                        <a class="btn btn-primary" href="#">Save</a>
+                        <a class="btn btn-secondary print ms-2" href="#"><i
+                                class="icon material-icons md-print"></i></a>
+                    </div> --}}
+                </div>
+            </header> <!-- card-header end// -->
+            <div class="card-body">
+                <div class="row mb-50 mt-20 order-info-wrap">
+                    <div class="col-md-4">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-person"></i>
+                            </span>
+                            <div class="text">
+                                <h6 class="mb-1">Customer</h6>
+                                {{!-- {{#with deliveryAddress}} --}}
+                                <p class="mb-1">
+                                    {{customerAddress.name}} <br>
+                                    {{customerAddress.email}}
+                                    <br>
+                                    {{customerAddress.phoneNumber}}
+                                </p>
+                                {{!-- {{/with}} --}}
+                            </div>
+                        </article>
+                    </div> <!-- col// -->
+                    <div class="col-md-4">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-local_shipping"></i>
+                            </span>
+                            <div class="text">
+                                <h6 class="mb-1">Order info</h6>
+                                <p class="mb-1">
+                                    {{#each orderProData}}
+                                    Shipping: Free <br>
+                                    Pay method: {{this.payment_method}} <br>
+                                    Status: {{this.order_status}}
+                                    {{/each}}
+                                </p>
+                            </div>
+                        </article>
+                    </div> <!-- col// -->
+                    <div class="col-md-4">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-place"></i>
+                            </span>
+                            <div class="text">
+                                <h6 class="mb-1">Deliver to</h6>
+                                <p class="mb-1">
+                                    City: {{customerAddress.town}}, {{customerAddress.state}} <br>
+                                    {{customerAddress.street_address}} <br>
+                                    {{!-- {{deliveryPoBox}} --}}
+                                </p>
+                            </div>
+                        </article>
+                    </div> <!-- col// -->
+                </div>
+                <!-- row // -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="25%">Product</th>
+                                        <th width="10%">Unit Price</th>
+                                        <th width="10%">Quantity</th>
+                                        <th width="10%" class="text-center">Total</th>
+                                        <th width="15%">Status</th>
+                                        <th width="30%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each products}}
+
+                                    <tr>
+                                        <td>
+                                            <a class="itemside" href="#">
+                                                <div class="left">
+                                                    <img src="/uploads/{{this.images.[0]}}" width="40" height="40"
+                                                        class="img-xs" alt="Item">
+                                                </div>
+                                                <div class="info">{{this.product_name}}</div>
+                                            </a>
+                                        </td>
+                                        <td>₹{{this.deal_price}}</td>
+
+                                        <td>{{this.quantity}}</td>
+                                        <td class="text-center">₹{{multiply this.deal_price this.quantity}}
+                                        </td>
+                                        <td>{{this.order_status}}</td>
+                                        <td class="w-50">
+                                            <select id="valueSelect-{{this._id}}" class="form-select d-inline-block">
+                                                <option selected>Chose Status</option>
+                                                <option value="Confiremed">Confiremed</option>
+                                                <option value="Shipped">Shipped</option>
+                                                <option value="Out for Delivery">Out for Delivery</option>
+
+                                                <option value="Delivered">Delivered</option>
+                                                <option value="Cancelled">Cancelled</option>
+                                            </select>
+                                            <button class="btn"
+                                                onclick="changeStatus('{{../orderId}}','{{this._id}}')">Save</buttton>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="4">
+                                            <article class="float-end">
+                                                <dl class="dlist">
+                                                    {{#each orderProData}}
+                                                    <dt>Subtotal:</dt>
+                                                    <dd>{{this.totalAmount}}</dd>
+                                                </dl>
+                                                <dl class="dlist">
+                                                    <dt>Shipping cost:</dt>
+                                                    <dd>Free</dd>
+                                                </dl>
+                                                <dl class="dlist">
+                                                    <dt>Grand total:</dt>
+                                                    <dd> <b class="h5">{{this.totalAmount}}</b> </dd>
+                                                </dl>
+                                                <dl class="dlist">
+                                                    <dt class="text-muted">Status:</dt>
+                                                    <dd>
+                                                        <span
+                                                            class="badge rounded-pill alert-success text-success">{{this.payment_status}}</span>
+                                                    </dd>
+                                                </dl>
+                                            </article>
+
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {{!-- <div>{{orderId}}</div> --}}
+
+                    </div> <!-- col// -->
+                    <div class="col-lg-1"></div>
+                    {{/each}}
+                </div>
+
+
+            </div> <!-- card-body end// -->
+        </div> <!-- card end// -->
+    </section> <!-- content-main end// -->
+    <footer class="main-footer font-xs">
+        <div class="row pb-30 pt-15">
+            <div class="col-sm-6">
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> ©, FasionFusion.
+            </div>
+        </div>
+    </footer>
+    <script>
+        function changeStatus(order_Id, productId) {
+            let status = document.getElementById("valueSelect-" + productId).value;
+            console.log(order_Id, "orderId");
+            $.ajax({
+                url: "/admin/changeOrderStatus",
+                method: "patch",
+                data: {
+                    orderId: order_Id,
+                    productId: productId,
+                    statusValue: status,
+                },
+                success: (response) => {
+                    location.reload()
+                },
+            });
+        }
+    </script>
+
+</main>
+{{!--
+<script>
+
+</script> --}}

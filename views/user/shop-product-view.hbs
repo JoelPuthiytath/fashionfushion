@@ -1,0 +1,385 @@
+﻿
+<div class="mobile-header-active mobile-header-wrapper-style">
+    <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-top">
+            <div class="mobile-header-logo">
+                <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
+            </div>
+            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                <button class="close-style search-close">
+                    <i class="icon-top"></i>
+                    <i class="icon-bottom"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/" rel="nofollow">Home</a>
+                <span></span> Fashion
+                <span></span> {{product.product_name}}
+            </div>
+        </div>
+    </div>
+    <section class="mt-50 mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-detail accordion-detail">
+                        <div class="row mb-50">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="detail-gallery">
+                                    <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                                    {{#if product}}
+                                    {{#with product}}
+                                    <!-- MAIN SLIDES -->
+                                    <div class="product-image-slider">
+                                        <figure class="border-radius-10">
+                                            <img src="/uploads/{{this.product_image.[0]}}" alt="product image">
+                                        </figure>
+                                        <figure class="border-radius-10">
+                                            <img src="/uploads/{{this.product_image.[1]}}" alt="product image">
+
+                                    </div>
+                                    <!-- THUMBNAILS -->
+                                    <div class="slider-nav-thumbnails pl-15 pr-15">
+                                        <div><img src="/uploads/{{this.product_image.[0]}}" alt="product image">
+                                        </div>
+                                        <div><img src="/uploads/{{this.product_image.[1]}}" alt="product image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Gallery -->
+                            </div>
+
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="detail-info">
+                                    <h2 class="title-detail">{{this.product_name}}</h2>
+                                    <div class="product-detail-rating">
+                                        <div class="pro-details-brand">
+                                            <span> Brands: {{this.product_brand}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix product-price-cover">
+                                        <div class="product-price primary-color float-left">
+                                            <ins><span class="text-brand">₹{{this.deal_price}}</span></ins>
+                                            <ins><span
+                                                    class="old-price font-md ml-15">₹{{this.product_price}}</span></ins>
+                                        </div>
+                                    </div>
+                                    <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                                    <div class="short-desc mb-30">
+                                        <p>{{this.product_description}}</p>
+                                    </div>
+                                    <div class="product_sort_info font-xs mb-30">
+                                        <ul>
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera
+                                                Brand Warranty</li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return
+                                                Policy</li>
+                                            <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{!-- <div class="attr-detail attr-color mb-15">
+                                        <strong class="mr-10">Color</strong>
+                                        <ul class="list-filter color-filter">
+                                            <li><a href="#" data-color="Red"><span class="product-color-red"></span></a>
+                                            </li>
+                                            <li><a href="#" data-color="Yellow"><span
+                                                        class="product-color-yellow"></span></a></li>
+                                            <li class="active"><a href="#" data-color="White"><span
+                                                        class="product-color-white"></span></a></li>
+                                            <li><a href="#" data-color="Orange"><span
+                                                        class="product-color-orange"></span></a></li>
+                                            <li><a href="#" data-color="Cyan"><span
+                                                        class="product-color-cyan"></span></a></li>
+                                            <li><a href="#" data-color="Green"><span
+                                                        class="product-color-green"></span></a></li>
+                                            <li><a href="#" data-color="Purple"><span
+                                                        class="product-color-purple"></span></a></li>
+                                        </ul>
+                                    </div> --}}
+                                    <div class="attr-detail attr-size">
+                                        <strong class="mr-10">Size</strong>
+                                        <ul class="list-filter size-filter font-small">
+                                            <li><a href="#">S</a></li>
+                                            <li class="active"><a href="#">M</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">XL</a></li>
+                                            <li><a href="#">XXL</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                    <div class="detail-extralink">
+                                        <div class="detail-qty border radius">
+                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                            <span class="qty-val">1</span>
+                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div>
+                                        <div class="product-extra-link2">
+                                            <button type="submit" onclick="addToCart('{{this._id}}')"
+                                                class="button button-add-to-cart">Add to
+                                                cart</button>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                                href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up"
+                                                href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Detail Info -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-10 m-auto entry-main-content">
+                                <h2 class="section-title style-1 mb-30">Description</h2>
+                                <div class="description mb-50">
+                                    <p>{{this.product_description}}</p>
+                                    {{!-- <ul class="product-more-infor mt-30">
+                                        <li><span>Type Of Packing</span> Bottle</li>
+                                        <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
+                                        <li><span>Quantity Per Case</span> 100ml</li>
+                                        <li><span>Ethyl Alcohol</span> 70%</li>
+                                        <li><span>Piece In One</span> Carton</li>
+                                    </ul> --}}
+                                    <hr class="wp-block-separator is-style-dots">
+                                    <p>Our frankenstein shoppy offers standard packaging and delivery with careful
+                                        packaging, trusted shipping partners, and estimated delivery times of 3-5
+                                        business days domestically and 7-14 business days internationally, along
+                                        with tracking information
+                                    </p>
+                                </div>
+                                <h3 class="section-title style-1 mb-30">Additional info</h3>
+                                <table class="font-md mb-30">
+                                    <tbody>
+                                        <tr class="stand-up">
+                                            <th>Stand Up</th>
+                                            <td>
+                                                <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="folded-wo-wheels">
+                                            <th>Folded (w/o wheels)</th>
+                                            <td>
+                                                <p>32.5″L x 18.5″W x 16.5″H</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="folded-w-wheels">
+                                            <th>Folded (w/ wheels)</th>
+                                            <td>
+                                                <p>32.5″L x 24″W x 18.5″H</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="door-pass-through">
+                                            <th>Door Pass Through</th>
+                                            <td>
+                                                <p>24</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="frame">
+                                            <th>Frame</th>
+                                            <td>
+                                                <p>Aluminum</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="weight-wo-wheels">
+                                            <th>Weight (w/o wheels)</th>
+                                            <td>
+                                                <p>20 LBS</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="weight-capacity">
+                                            <th>Weight Capacity</th>
+                                            <td>
+                                                <p>60 LBS</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="width">
+                                            <th>Width</th>
+                                            <td>
+                                                <p>24″</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="handle-height-ground-to-handle">
+                                            <th>Handle height (ground to handle)</th>
+                                            <td>
+                                                <p>37-45″</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="wheels">
+                                            <th>Wheels</th>
+                                            <td>
+                                                <p>12″ air / wide track slick tread</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="seat-back-height">
+                                            <th>Seat back height</th>
+                                            <td>
+                                                <p>21.5″</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="head-room-inside-canopy">
+                                            <th>Head room (inside canopy)</th>
+                                            <td>
+                                                <p>25″</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="pa_color">
+                                            <th>Color</th>
+                                            <td>
+                                                <p>Black, Blue, Red, White</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="pa_size">
+                                            <th>Size</th>
+                                            <td>
+                                                <p>M, S</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {{/with}}
+                                {{/if}}
+                                <div class="social-icons single-share">
+                                    <ul class="text-grey-5 d-inline-block">
+                                        <li><strong class="mr-10">Share this:</strong></li>
+                                        <li class="social-facebook"><a href="#"><img
+                                                    src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
+                                        <li class="social-twitter"> <a href="#"><img
+                                                    src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
+                                        <li class="social-instagram"><a href="#"><img
+                                                    src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                                        </li>
+                                        <li class="social-linkedin"><a href="#"><img
+                                                    src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {{!-- <h3 class="section-title style-1 mb-30 mt-30">Reviews (3)</h3> --}}
+                                <!--comment form-->
+                                <div class="comment-form">
+                                    <h4 class="mb-15">Add a review</h4>
+                                    <div class="product-rate d-inline-block mb-30">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-12">
+                                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control w-100" name="comment"
+                                                                id="comment" cols="30" rows="9"
+                                                                placeholder="Write Comment"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="name" id="name"
+                                                                type="text" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="email" id="email"
+                                                                type="email" placeholder="Email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="website" id="website"
+                                                                type="text" placeholder="Website">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="button button-contactForm">Submit
+                                                        Review</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-60">
+                            <div class="col-12">
+                                <h3 class="section-title style-1 mb-30">Related products</h3>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="row related-products">
+                                    {{#if products}}
+                                    {{#each products}}
+                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                        <div class="product-cart-wrap small hover-up">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="/product-view?id={{_id}}" tabindex="0">
+                                                        <img class="default-img" src="/uploads/{{image1}}" alt="">
+                                                        <img class="hover-img" src="/uploads/{{image2}}" alt="">
+                                                    </a>
+                                                </div>
+                                                <p>{{_id}}</p>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Quick view" class="action-btn small hover-up"
+                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal "><i
+                                                            class="fi-rs-search"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up"
+                                                        onclick="addToWishList('{{this._id}}')" tabindex="0"><i
+                                                            class="fi-rs-heart"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    <span class="hot">Hot</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <h2><a href="/product-view?id={{_id}}" tabindex="0">{{name}}</a></h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span></span>
+                                                </div>
+                                                <div class="product-price">
+                                                    <span>₹{{oldPrice}}</span>
+                                                    <span class="old-price">₹{{newPrice}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                    {{/if}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
+                        <img class="border-radius-10" src="assets/imgs/banner/banner-4.png" alt="">
+                        <div class="banner-text">
+                            <h4 class="mb-15 mt-40">FashionFusion</h4>
+                            <h2 class="fw-600 mb-20">Style Unleashed<br>Your Destination for Fashion Excellence</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="text-center">
+                <h5 class="mb-5">Now Loading</h5>
+                <div class="loader">
+                    <div class="bar bar1"></div>
+                    <div class="bar bar2"></div>
+                    <div class="bar bar3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

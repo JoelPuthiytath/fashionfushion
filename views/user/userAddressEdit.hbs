@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 d-flex justify-content-center align-items-center"></div>
+        <div class="col-lg-6">
+            <div class="card mt-30"  style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
+                <div class="card-header">
+                    <h5>Add Shipping Address</h5>
+                </div>
+                <div class="card-body">
+                    <div class="col-lg-8 col-md-8">
+                        <form method="post" id="edit-shopping-address">
+                        {{#each billingAddress}}     
+                            <div class="form-group">
+                               
+                                <input type="text" required="" value="{{this.name}}" name="name" placeholder="Name ">
+                            </div>
+                            <div class="form-group">
+                                <input required="" type="text" value="{{email}}" name="email" placeholder="Email address ">
+                            </div>
+                            <div class="form-group">
+                                <input required="" type="tel" value="{{phoneNumber}}" name="phone" placeholder="10-digit mobile number">
+                            </div>
+                            <div class="form-group">
+                                <div class="custom_select">
+                                    <select class="form-control select-active" name="state">
+                                        <option value="{{state}}">{{state}}</option>
+                                        <option value="Andaman &amp; Nicobar Islands">
+                                            Andaman
+                                            &amp; Nicobar Islands
+                                        </option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh
+                                        </option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh
+                                        </option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Dadra &amp; Nagar Haveli &amp; Daman &amp; Diu">
+                                            Dadra &amp; Nagar
+                                            Haveli &amp; Daman &amp; Diu
+                                        </option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh
+                                        </option>
+                                        <option value="Jammu &amp; Kashmir">Jammu &amp;
+                                            Kashmir
+                                        </option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Ladakh">Ladakh</option>
+                                        <option value="Lakshadweep">Lakshadweep</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh
+                                        </option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Puducherry">Puducherry</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="street_address" value="{{street_address}}" required=""
+                                    placeholder="Address (area, street, pin-code)"></input>
+                            </div>
+                            <div class="form-group">
+                                <input required="" type="text" name="city" value="{{town}}" placeholder="City / District / Town ">
+                            </div>
+                            <input type="text" value="{{_id}}" name="addressId" id="" hidden>
+                            <button type="submit" onclick="" class="btn-sm">Submit</button>
+                            {{/each}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $("#edit-shopping-address").submit((e)=>{
+        e.preventDefault();
+        $.ajax({
+            url:"/edit-shipping-address",
+            method:"put",
+            data:$("#edit-shopping-address").serialize(),
+            success:(response)=>{
+                if(response.status){
+                    location.reload();
+                }
+            }
+        })
+    })
+</script>

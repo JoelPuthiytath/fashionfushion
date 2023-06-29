@@ -1,0 +1,127 @@
+<style>
+
+    .login-form {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        height: 60vh;
+    }
+
+    .form-control {
+        border-color: #ddd ;
+        border-radius: 8px;
+        font-size: smaller;
+        padding: 12px;
+        box-shadow: none;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #ffffff;
+    }
+
+    .form-label {
+        margin-top: 5px;
+        font-weight: 100;
+    }
+
+    .btn-primary {
+        background-color: #4e8bff;
+        border-color: #4e8bff;
+        size: 10px;
+        font-size: smaller;
+    }
+
+    .btn-primary:hover {
+        background-color: #000000;
+        color: #ff0000;
+    }
+
+    .btn-outline-primary {
+        color: #4e8bff;
+        border-color: #4e8bff;
+        size: 10px;
+        font-size: smaller;
+    }
+
+    .btn-outline-primary:hover {
+        color: #fff;
+        background-color: #000000;
+        size: 15px;
+        font-size: medium;
+        font-family: Brush Script MT, Brush Script Std, cursive;
+        transition: background-color 0.8s, font-size 0.8, font-family:0.9;
+    }
+
+    .divider-text {
+        text-align: center;
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .divider-text span {
+        background-color: #fff;
+        padding: 5px;
+        font-weight: 600;
+    }
+</style>
+
+<section>
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100 mt-30 pt-70">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 p-3 fs-sm login-form">
+                <form action="/user-login" method="post">
+                    {{#if alert}}
+                    {{#each alert}}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{msg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {{/each}}
+                    {{/if}}
+                    <div class="form-outline mt-2 mb-2">
+                        <input type="email" name="email" id="form3Example3" class="form-control form-control-lg"
+                            placeholder="Enter a valid email address">
+                        <label class="form-label fs-sm" for="form3Example3">Email address</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-2">
+                        <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
+                            placeholder="Enter password">
+                        <label class="form-label fs-sm" for="form3Example4">Password</label>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Checkbox -->
+                        {{#if message}}
+                        <div class="alert alert-warning fs-6 alert-dismissible fade show text-center mx-auto"
+                            role="alert">
+                            <strong>{{message.message}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                        {{/if}}
+                    </div>
+
+                    <div class="text-center text-lg-start pt-2">
+                        <input type="submit" value="Login" class="btn btn-primary">
+                        <div class="divider-text mt-3 mb-2">
+                            <span>or</span>
+                        </div>
+                        <a href="/otp-verification" class="btn btn-outline-primary">Login with Mobile Number</a>
+                        <p class="small fw-bold mb-0 mt-2">Don't have an account? <a href="/user-signup"
+                                class="link-danger">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+

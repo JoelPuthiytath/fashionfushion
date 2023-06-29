@@ -1,0 +1,231 @@
+
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="/admin" class="brand-wrap">
+            <h4>FashionFusion</h4>
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-users"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/order-page"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addCategories"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Add Items</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/addCategories">Create Categories</a>
+                    <a href="/admin/addCoupon">Create Coupon</a>
+                    <a href="/admin/banner-creation">Create Banner</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/sales-report"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Sales Report</span> </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+<header class="main-wrap main-header navbar">
+    <div class="col-search">
+        <form class="searchform">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Shirts">
+                <option value="Pants">
+                <option value="Bags">
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                class="material-icons md-apps"></i> </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="#">
+                    <i class="material-icons md-notifications animation-shake"></i>
+                    <span class="badge rounded-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false"> <img class="img-xs rounded-circle"
+                        src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/admin/admin-logout"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+<main class="main-wrap">
+  <section class="content-main">
+    <form class="form-horizontal" action="/admin/edit-product?id={{product._id}}" method="post" enctype="multipart/form-data">
+
+      <div class="row">
+        <div class="col-9">
+          <div class="content-header">
+            <h2 class="content-title">Edit Product</h2>
+          </div>
+        </div>
+        <div class="col-6 ml-30">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4>Basic</h4>
+            </div>
+            {{#if product}}
+            {{#with product}}
+            <div class="card-body">
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Product Titile</label>
+                <input type="text" placeholder="{{this.product_name}}" value="{{this.product_name}}" name="product_name" class="form-control"
+                  id="product_name">
+              </div>
+              <div class="mb-4">
+                <label for="product_brand" class="form-label">Product Brand</label>
+                <input type="text" placeholder="{{this.product_brand}}" value="{{this.product_brand}}" name="product_brand" class="form-control"
+                  id="product_brand">
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Full description</label>
+                <input type="taxt" width="200px" height="300px" placeholder="{{this.product_description}}"value="{{this.prdouct_description}}" name="product_description" class="form-control"
+                  rows="4"></textarea>
+              </div>
+              <div class="mb-4">
+                <label for="product_stock" class="form-label">Product Stock</label>
+                <input type="number" placeholder="{{this.in_stock}}" value="{{this.in_stock}}" name="product_stock" class="form-control"
+                  id="product_stock">
+              </div>
+
+              <div class="row">
+                <div class="col-4 ml-20">
+                  <div class="mb-4">
+                    <label class="form-label">Regular price</label>
+                    <div class="row gx-2">
+                      <input placeholder="${{this.product_price}}" value="{{this.product_price}}" type="number" name="regular_price"
+                        class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-4 ml-20">
+                    <label class="form-label">Promotional price</label>
+                    <input placeholder="${{this.deal_price}}" value="{{this.deal_price}}" name="promotional_price" type="number"
+                      class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/with}}
+            {{/if}}
+
+          </div> <!--card end// -->
+        </div>
+        <div class="col-3 ml-10">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4>Media</h4>
+            </div>
+            <div class="card-body">
+              <div class="input-upload">
+                <img src="/admin-assets/imgs/theme/upload.svg" alt="">
+                <input class="form-control" name="image" type="file" multiple >
+              </div>
+              <div class="mb-4 mt-5">
+                <label class="form-label"> Add Cover Photo</label>
+                <input class="form-control" name="cover_photo" type="file">
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <h4>Organization</h4>
+            </div>
+            <div class="card-body">
+              <div class="row gx-2">
+                <div class="col-8 ml-10">
+                  {{#if category}}
+                  <select name="category" class="form-select">
+                    <option selected  value="{{product.category._id}}">{{product.category.category_name}}</option>
+                    {{#each category}}
+                    <option value="{{this.category_name}}">{{this.category_name}}</option>
+                    {{/each}}
+                  </select>
+                  {{/if}}
+
+                </div>
+              </div> <!-- row.// -->
+            </div>
+            <input type="submit" class="btn btn-md rounded font-sm hover-up" value="Publich">
+          </div> <!-- card end// -->
+        </div>
+        <div id="image-preview" class="col-2 card-body">
+   
+          {{#each product.product_image}}
+          <img src="/uploads/{{this}}" width="100px" height="100px" alt="" srcset="">
+          {{/each}}
+
+
+        </div>
+      </div>
+
+    </form>
+  </section><!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> ©, FasionFusion.
+                </div>
+            </div>
+        </footer>
+</main>

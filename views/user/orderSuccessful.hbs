@@ -1,0 +1,45 @@
+<body>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding-top: 120px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+        }
+
+        .success-heading {
+            font-size: 2rem;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .success-message {
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .btn-primary {
+            margin-top: 30px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="success-icon">&#10004;</div>
+        <h1 class="success-heading">Order Placed Successfully!</h1>
+        <p class="success-message">Your order has been successfully placed. Thank you for your purchase!</p>
+        <a href="/view-order-details?id={{orderId}}" class="btn btn-primary">Go to Orders Page</a>
+    </div>
+
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

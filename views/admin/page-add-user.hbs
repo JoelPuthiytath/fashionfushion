@@ -1,0 +1,152 @@
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="/admin" class="brand-wrap">
+            <h4>FashionFusion</h4>
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-users"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/order-page"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addCategories"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Add Items</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/addCategories">Create Categories</a>
+                    <a href="/admin/addCoupon">Create Coupon</a>
+                    <a href="/admin/banner-creation">Create Banner</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/sales-report"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Sales Report</span> </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+<header class="main-wrap main-header navbar">
+    <div class="col-search">
+        <form class="searchform">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Shirts">
+                <option value="Pants">
+                <option value="Bags">
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                class="material-icons md-apps"></i> </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="#">
+                    <i class="material-icons md-notifications animation-shake"></i>
+                    <span class="badge rounded-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false"> <img class="img-xs rounded-circle"
+                        src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/admin/admin-logout"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<main class="main-wrap mt-40" style="background-color: #ffff;">
+    <section style="width:60vw; margin-left: 70px;">
+        <form method="post" action="/admin/add-Users">
+            <h3 class="text-center">Add Users</h3>
+            {{#if alert}}
+            {{#each alert}}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{msg}}
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+            {{/each}}
+            {{/if}}
+            <div class="form-group">
+                <label for="username">Name:</label>
+                <input type="text" placeholder="Name" name="username" class="form-control" id="username">
+            </div>
+                <div class="form-group">
+                <label for="email">Phone Number:</label>
+                <input type="phoneNumber" placeholder="+91" name="phoneNumber" class="form-control" id="phoneNumber">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" placeholder="Email Address" name="email" class="form-control" id="email">
+            </div>
+             <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" placeholder="User Password" name="password" class="form-control" id="password">
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="submit" class=" btn btn-success my-3 me-5" value="Submit">
+            </div>
+            {{!-- <button type="submit" class="btn btn-success mt-5 ">Submit</button> --}}
+        </form>
+    </section>
+
+</main>
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> ©, FasionFusion.
+                </div>
+            </div>
+        </footer>

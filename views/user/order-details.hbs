@@ -1,0 +1,442 @@
+<body>
+    <style>
+        .orderInfo {
+            transition: transform 0.3s;
+        }
+
+        .orderInfo:hover {
+            transform: scale(1.1);
+        }
+
+
+        .btnData {
+            width: 100px;
+            height: 35px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background: red;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+            background: #e62222;
+        }
+
+        button,
+        button span {
+            transition: 200ms;
+        }
+
+        button .text {
+            transform: translateX(35px);
+            color: white;
+            font-weight: bold;
+        }
+
+        .btnData .icon {
+            transform: translateX(80px);
+            height: 40px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+
+        .btnData svg {
+            width: 15px;
+            fill: transparent;
+        }
+
+        .btnData:hover svg {
+            width: 15px;
+            fill: #eee;
+
+        }
+
+        .btnData:hover {
+            background: #ff3636;
+        }
+
+        .btnData:hover .text {
+            color: transparent;
+        }
+
+
+        .btnData:hover .icon {
+            width: 150px;
+            border-left: none;
+            transform: translateX(0);
+        }
+
+        .btnData:focus {
+            outline: none;
+        }
+
+        .btnData:active .icon svg {
+            transform: scale(0.8);
+        }
+    </style>
+
+    <!-- desktop menu -->
+    <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="my-logo">
+                    <h5>Frankenstein</h5>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <nav>
+                        <ul class="mobile-menu">
+                            <li>
+                                <a href="/">HOME</a>
+                            </li>
+                            <li>
+                                <a href="/mens">MEN</a>
+                            </li>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- mobile menu end -->
+                </div>
+                <div class="mobile-header-info-wrap mobile-header-border">
+                    <div class="single-mobile-header-info">
+                        <a href="/user-login">Log In</a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="/user-signup">Sign Up</a>
+                    </div>
+                </div>
+                <div class="mobile-social-icon">
+                    <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+             
+    </div>
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="/" style="text-decoration: none; color:gray" rel="nofollow">Home</a>
+                    <span></span> <a style="text-decoration: none; color:gray" href="/profile-view">Profile</a>
+                    <span></span> Order Details
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-md card-body" id="orderId">Order ID : {{order._id}}</span>
+                        <div class="table-responsive">
+                            <div class="card-body">
+                                {{#if order}}
+
+                                <table id="orderTable" class="table table-hover" style="overflow-y: auto;">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Total</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col" class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each order.products}}
+
+                                        <tr>
+
+                                            <td><img src="/uploads/{{this.cover_photo}}" width="50" height="50"
+                                                    class="img-md" alt="Item"></td>
+                                            <td><b>{{this.product_name}}</b></td>
+                                            <td>{{this.quantity}}</td>
+                                            <td>₹{{this.deal_price}}</td>
+                                            <td>₹{{multiply this.quantity this.deal_price}}</td>
+                                            <td>
+                                                <span
+                                                    class="rounded-pill {{../color}} pl-3 pr-3 pt-2 pb-2">{{this.order_status}}</span>
+                                            </td>
+                                            <td class="action-col d-flex justify-content-center align-items-center">
+                                                {{#ifCond order_status "Delivered"}}
+                                                <button class="btn btnData btn-outline-warning btn-sm font-sm mb-4"
+                                                    onclick="returnOrder('{{this.item}}','{{../order._id}}','{{../order.payment_status}}','{{this.quantity}}','{{this.deal_price}}','{{../order.totalAmount}}','{{../order.discountAmount}}','{{dateFormat ../order.deliveryDate}}')">Return
+                                                    Order</button>
+                                                {{else}}
+                                                {{#ifAnyMatch order_status "Cancelled" "Returned" "Return requested"}}
+                                                <p class="text-danger text-center">{{order_status}}</p>
+                                                {{else}}
+
+                                                <button
+                                                    onclick="orderCancel('{{this.item}}','{{../order._id}}','{{../order.payment_status}}','{{this.quantity}}','{{this.deal_price}}','{{../order.totalAmount}}','{{../order.discountAmount}}')"
+                                                    class="noselect font-sm btnData mb-4">
+                                                    <span class="text font-sm">Cancel</span>
+                                                    <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="14" height="14" viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
+                                                            </path>
+                                                        </svg></span></button>
+                                                {{/ifAnyMatch}}
+                                                {{/ifCond}}
+                                            </td>
+
+
+
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+                                <div class="row mb-30 mt-30 order-info-wrap card-body">
+                                    <div class="col-md-4 text-center card-body orderInfo">
+                                        <article class="icontext align-items-start ">
+
+                                            <i class="fa fa-user fs-1" aria-hidden="true"></i>
+
+                                            <div class="text mt-4">
+                                                {{#with order.deliveryAddress}}
+                                                <h6 class="mb-1">Customer</h6>
+                                                {{!-- {{#with deliveryAddress}} --}}
+                                                <p class="mb-1">
+                                                    {{this.name}} <br>
+                                                    {{this.email}}
+                                                    <br>
+                                                    +91 {{this.phoneNumber}}
+                                                </p>
+
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-md-4 text-center card-body orderInfo">
+                                        <article class="icontext align-items-start">
+                                            <i class="fa fa-truck fs-1" aria-hidden="true"></i>
+                                            <div class="text mt-4">
+                                                <h6 class="mb-1">Deliver to</h6>
+                                                <p class="mb-1">
+                                                <ul class="list-unstyled">
+                                                    <li><span>City:
+                                                            {{town}}</span></li>
+                                                    <li><span>State : {{state}}
+                                                        </span></li>
+                                                    <li>
+                                                        <span>{{street_address}}</span>
+                                                    </li>
+
+                                                </ul>
+
+
+                                                {{!-- {{deliveryPoBox}} --}}
+                                                </p>
+                                                {{/with}}
+                                            </div>
+                                        </article>
+                                    </div> <!-- col// -->
+                                    <div class="col-md-4 text-center orderInfo card-body border">
+                                        <article class="icontext align-items-start">
+                                            <i class="fa fa-shopping-cart fs-1" aria-hidden="true"></i>
+                                            <div class="text mt-4">
+                                                <h6 class="mb-1">Order info</h6>
+                                                <ul class="list-unstyled">
+                                                    <li class="d-flex justify-content-between">
+                                                        <span>Subtotal:</span>
+                                                        <span>₹{{subTotal}}</span>
+                                                    </li>
+                                                    <li class="d-flex justify-content-between">
+                                                        <span>Coupon Discount:</span>
+                                                        <span class="text-danger">₹{{#if order.discountAmount}}
+                                                            {{order.discountAmount}} {{else}} 0 {{/if}}</span>
+                                                    </li>
+                                                    <li class="d-flex justify-content-between">Shipping: <span
+                                                            class="text-success">Free</span></li>
+                                                    <li class="d-flex justify-content-between">
+                                                        <span>Pay method:</span>
+                                                        <span>{{order.payment_method}}</span>
+                                                    </li>
+                                                    <li class="d-flex justify-content-between">
+                                                        <span>Status:</span>
+                                                        <span>{{order.order_status.[0].status}}</span>
+                                                    </li>
+                                                    <li class="d-flex justify-content-between">
+                                                        <span>Total Amount:</span>
+                                                        <span class="text-success">₹{{order.totalAmount}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </article>
+                                    </div>
+                                </div>
+
+
+                                {{else}}
+
+                                <div class="text-center">
+                                    <h4> You Have No Orders</h4>
+                                    <a href="/" class="btn btn-info">Visit Products</a>
+                                </div>
+                                {{/if}}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            $('#orderTable').DataTable();
+        });
+    </script>
+    <!-- Preloader Start -->
+
+    <script>
+        function orderCancel(productId, orderId, paymentStatus, quantity, price, totalAmount, refundAmount) {
+            console.log(`product id ${productId}`)
+            console.log(`order id ${orderId}`)
+            console.log(`quanity ${quantity}`)
+            console.log(`payment status ${paymentStatus}`)
+            console.log(`price ${price}`)
+
+            Swal.fire({
+                title: 'Are you sure ?',
+                text: "you can't undo this action",
+                icon: 'warning',
+                confirmButtonText: 'Cancel Order'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { value: text } = await Swal.fire({
+                        input: 'textarea',
+                        inputLabel: 'Reason',
+                        inputPlaceholder: 'Type your reason here...',
+                        inputAttributes: {
+                            'aria-label': 'Type your reason here'
+                        },
+                        showCancelButton: true
+                    }).then(() => {
+                        $.ajax({
+                            url: '/cancel-order',
+                            type: 'PATCH',
+                            data: {
+                                productId: productId,
+                                orderId: orderId,
+                                quantity: quantity,
+                                paymentStatus: paymentStatus,
+                                price: price,
+                                totalAmount,
+                                refundAmount
+                            },
+                            success: (response) => {
+                                if (response.status) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Order cancelled successfully',
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    }).then(() => {
+                                        location.reload()
+                                    })
+
+                                }
+                            }
+                        })
+                    })
+                }
+
+            });
+        }
+
+function returnOrder(productId, orderId, paymentStatus, quantity, price, totalAmount, refundAmount, deliveryDate) {
+    console.log(`product id ${productId}`);
+    console.log(`order id ${orderId}`);
+    console.log(`quantity ${quantity}`);
+    console.log(`payment status ${paymentStatus}`);
+    console.log(`price ${price}`);
+    console.log(`deliveryDate ${deliveryDate}`);
+
+    let delivered = new Date(deliveryDate); // corrected variable name from 'deliveredDate' to 'deliveryDate'
+    let today = new Date();
+    let timeDiff = today.getTime() - delivered.getTime();
+    let daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+    if (daysDiff > 7) {
+        Swal.fire({
+            title: 'Return Window Closed',
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+        });
+    } else {
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            confirmButtonText: 'Return Order'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const { value: text } = await Swal.fire({
+                    input: 'textarea',
+                    inputLabel: 'Reason',
+                    inputPlaceholder: 'Type your reason here...',
+                    inputAttributes: {
+                        'aria-label': 'Type your reason here'
+                    },
+                    showCancelButton: true
+                });
+
+                $.ajax({
+                    url: '/return-order',
+                    type: 'PATCH',
+                    data: {
+                        productId: productId,
+                        orderId: orderId,
+                        quantity: quantity,
+                        paymentStatus: paymentStatus,
+                        price: price,
+                        totalAmount: totalAmount, // added missing ':' after 'totalAmount'
+                        refundAmount: refundAmount // removed trailing comma
+                    },
+                    success: (response) => {
+                        if (response.status) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Order returned',
+                                showConfirmButton: false,
+                                timer: 2000
+                            }).then(() => {
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+    </script>
+
+    <!-- for the invoice -->
+
+
+</body>

@@ -1,0 +1,126 @@
+﻿
+<style>
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+</style>
+    <!-- desktop menu -->
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="/" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Your Cart
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 p-4">
+                        {{#if cartProducts}}
+                        <div class="table-responsive" style="max-height: 60vh; overflow-y: auto;">
+                            
+                            <table class="table shopping-summery text-center clean">
+                                <thead>
+                                    <tr class="main-heading">
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col" >Subtotal</th>
+                                        <th scope="col" >Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each cartProducts}}
+                                    <tr>
+                                        <td class="image product-thumbnail"><img
+                                                src="/uploads/{{this.product.cover_photo}}" alt="#">
+                                        </td>
+                                        <td class="product-des product-name">
+                                            <h6 class="product-name mt-3"><a
+                                                    href="/product-view?id={{this.product._id}}">{{this.product.product_name}}</a>
+                                            </h6>
+                                        </td>
+                                        <td class="price" data-title="Price"><span class="mt-3">₹{{this.product.deal_price}}</span>
+                                        </td>
+                                        <td class="text-center" data-title="Stock">
+                                            <div class="detail-qty border radius  m-auto">
+                                                <a onclick="changeQty('{{this._id}}','{{this.product._id}}','{{../userId}}',{{this.product.deal_price}},-1)"
+                                                    class="qty-down" id="qty-down"><i
+                                                        class="fi-rs-angle-small-down"></i></a>
+                                                <span id="{{this.product._id}}" class="qty-val p-2">{{this.quantity}}
+                                                </span>
+                                                <a onclick="changeQty('{{this._id}}','{{this.product._id}}','{{../userId}}',{{this.product.deal_price}},1)"
+                                                    class="qty-up" id="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                            </div>
+                                        </td>
+                                        <td class="text-right" data-title="Cart">
+                                            <span id="subtotal">₹{{multiply this.product.deal_price
+                                                this.quantity}}</span>
+                                        </td>
+                                        <td class="action" data-title="Remove"><a
+                                                onclick="productRemove('{{this.product._id}}','{{this._id}}')"
+                                                class="text-muted "><i class="fi-rs-trash"></i></a></td>
+                                    </tr>
+                                    {{/each}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                        {{else}}
+                        <div class="text-center">
+                            <h4>There is no products in the cart</h4>
+                            {{!-- <a href="/shop" class="btn btn-outline info"> Go to Shop</a> --}}
+                        </div>
+                        {{/if}}
+                        <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+    
+
+                        <a href="/" class="btn btn-md btn-outline-info float-right"><i class="fi-rs-shopping-bag mr-10"></i>Continue
+                            Shopping</a>
+
+                        {{!-- <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div> --}}
+
+                        <div class="col-lg-6 col-md-12">
+
+                            <div class="border p-md-4 p-30 border-radius cart-totals">
+                                <div class="heading_s1 mb-3">
+                                    <h4>Cart Totals</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="cart_total_label">Cart Subtotal</td>
+                                                <td class="cart_total_amount"><span id="cartSubtotal"
+                                                        class="font-lg fw-900 text-brand">${{total}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Shipping</td>
+                                                <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free
+                                                    Shipping</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Total</td>
+                                                <td class="cart_total_amount"><strong><span id="cartTotal"
+                                                            class="font-xl fw-900 text-brand">${{total}}</span></strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="/place-order" class="btn btn-outline-info "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>

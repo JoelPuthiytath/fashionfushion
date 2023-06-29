@@ -1,0 +1,938 @@
+﻿<style>
+    .custom-file-label {
+        cursor: pointer;
+    }
+
+    .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    .custom-file-input::before {
+        content: 'Choose Photo';
+        display: inline-block;
+        background: #007bff;
+        color: #fff;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .table.table-bordered {
+        border: none;
+    }
+
+    .table.table-bordered th,
+    .table.table-bordered td {
+        border: none;
+    }
+
+    .table-wrapper {
+        overflow-y: auto;
+    }
+
+    .custom-file-input:hover::before {
+        background: #0069d9;
+    }
+
+    .custom-file-input:active::before {
+        background: #0056b3;
+    }
+
+
+
+    .Btn {
+        width: 115px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(15, 15, 15);
+        border: none;
+        color: white;
+        font-weight: 600;
+        gap: 8px;
+        cursor: pointer;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+        position: relative;
+        overflow: hidden;
+        transition-duration: .3s;
+    }
+
+    .svgIcon {
+        width: 16px;
+    }
+
+    .svgIcon path {
+        fill: white;
+    }
+
+    .Btn::before {
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        content: "";
+        background-color: white;
+        border-radius: 50%;
+        left: -100%;
+        top: 0;
+        transition-duration: .3s;
+        mix-blend-mode: difference;
+    }
+
+    .Btn:hover::before {
+        transition-duration: .3s;
+        transform: translate(100%, -50%);
+        border-radius: 0;
+    }
+
+    .Btn:active {
+        transform: translate(5px, 5px);
+        transition-duration: .3s;
+    }
+
+
+    .error {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 320px;
+        padding: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        background: #EF665B;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px -3px #111;
+    }
+
+    .error__icon {
+        width: 20px;
+        height: 20px;
+        transform: translateY(-2px);
+        margin-right: 8px;
+    }
+
+    .error__icon path {
+        fill: #fff;
+    }
+
+    .error__title {
+        font-weight: 500;
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .error__close {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    .error__close path {
+        fill: #fff;
+    }
+</style>
+
+<div class="mobile-header-active mobile-header-wrapper-style">
+    <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-top">
+            <div class="mobile-header-logo">
+                <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
+            </div>
+            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                <button class="close-style search-close">
+                    <i class="icon-top"></i>
+                    <i class="icon-bottom"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-header-content-area">
+            <div class="mobile-search search-style-3 mobile-header-border">
+                <form action="#">
+                    <input type="text" placeholder="Search for items…">
+                    <button type="submit"><i class="fi-rs-search"></i></button>
+                </form>
+            </div>
+            <div class="mobile-menu-wrap mobile-header-border">
+                <div class="main-categori-wrap mobile-header-border">
+                    <a class="categori-button-active-2" href="#">
+                        <span class="fi-rs-apps"></span> Browse Categories
+                    </a>
+                    <div class="categori-dropdown-wrap categori-dropdown-active-small">
+                        <ul>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-dress"></i>Women's Clothing</a></li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-tshirt"></i>Men's Clothing</a></li>
+                            <li> <a href="shop-grid-right.html"><i class="evara-font-smartphone"></i> Cellphones</a>
+                            </li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-desktop"></i>Computer & Office</a>
+                            </li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-cpu"></i>Consumer Electronics</a>
+                            </li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-home"></i>Home & Garden</a></li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-high-heels"></i>Shoes</a></li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-teddy-bear"></i>Mother & Kids</a>
+                            </li>
+                            <li><a href="shop-grid-right.html"><i class="evara-font-kite"></i>Outdoor fun</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- mobile menu start -->
+                <nav>
+                    <ul class="mobile-menu">
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                href="index.html">Home</a>
+                            <ul class="dropdown">
+                                <li><a href="index.html">Home 1</a></li>
+                                <li><a href="index-2.html">Home 2</a></li>
+                                <li><a href="index-3.html">Home 3</a></li>
+                                <li><a href="index-4.html">Home 4</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                href="shop-grid-right.html">shop</a>
+                            <ul class="dropdown">
+                                <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
+                                <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
+                                <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
+                                <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
+                                <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Single
+                                        Product</a>
+                                    <ul class="dropdown">
+                                        <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
+                                        <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
+                                        <li><a href="shop-product-full.html">Product – No sidebar</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="shop-filter.html">Shop – Filter</a></li>
+                                <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
+                                <li><a href="shop-cart.html">Shop – Cart</a></li>
+                                <li><a href="shop-checkout.html">Shop – Checkout</a></li>
+                                <li><a href="shop-compare.html">Shop – Compare</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Mega menu</a>
+                            <ul class="dropdown">
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's
+                                        Fashion</a>
+                                    <ul class="dropdown">
+                                        <li><a href="shop-product-right.html">Dresses</a></li>
+                                        <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
+                                        <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
+                                        <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's
+                                        Fashion</a>
+                                    <ul class="dropdown">
+                                        <li><a href="shop-product-right.html">Jackets</a></li>
+                                        <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
+                                        <li><a href="shop-product-right.html">Genuine Leather</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                        href="#">Technology</a>
+                                    <ul class="dropdown">
+                                        <li><a href="shop-product-right.html">Gaming Laptops</a></li>
+                                        <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
+                                        <li><a href="shop-product-right.html">Tablets</a></li>
+                                        <li><a href="shop-product-right.html">Laptop Accessories</a></li>
+                                        <li><a href="shop-product-right.html">Tablet Accessories</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                href="blog-category-fullwidth.html">Blog</a>
+                            <ul class="dropdown">
+                                <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
+                                <li><a href="blog-category-list.html">Blog Category List</a></li>
+                                <li><a href="blog-category-big.html">Blog Category Big</a></li>
+                                <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Single
+                                        Product Layout</a>
+                                    <ul class="dropdown">
+                                        <li><a href="blog-post-left.html">Left Sidebar</a></li>
+                                        <li><a href="blog-post-right.html">Right Sidebar</a></li>
+                                        <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="page-about.html">About Us</a></li>
+                                <li><a href="page-contact.html">Contact</a></li>
+                                <li><a href="page-account.html">My Account</a></li>
+                                <li><a href="page-login-register.html">login/register</a></li>
+                                <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
+                                <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="page-terms.html">Terms of Service</a></li>
+                                <li><a href="page-404.html">404 Page</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
+                            <ul class="dropdown">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">French</a></li>
+                                <li><a href="#">German</a></li>
+                                <li><a href="#">Spanish</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- mobile menu end -->
+            </div>
+            <div class="mobile-header-info-wrap mobile-header-border">
+                <div class="single-mobile-header-info mt-30">
+                    <a href="page-contact.html"> Our location </a>
+                </div>
+                <div class="single-mobile-header-info">
+                    <a href="page-login-register.html">Log In / Sign Up </a>
+                </div>
+                <div class="single-mobile-header-info">
+                    <a href="#">(+01) - 2345 - 6789 </a>
+                </div>
+            </div>
+            <div class="mobile-social-icon">
+                <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="main">
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a style="text-decoration: none; color:gray" href="/" rel="nofollow">Home</a>
+                <span></span> Pages
+                <span></span> <a href="/profile-view" style="text-decoration: none; color:gray">Profile</a>
+            </div>
+        </div>
+    </div>
+    <section class="pt-60 pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 m-auto">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="dashboard-menu">
+                                <ul class="nav flex-column" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab"
+                                            href="#dashboard" role="tab" aria-controls="dashboard"
+                                            aria-selected="false"><i class="fi-rs-user mr-10"></i>My Profile
+                                            Information</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders"
+                                            role="tab" aria-controls="orders" aria-selected="false"><i
+                                                class="fi-rs-shopping-bag mr-10"></i>Orders</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " id="wallet-tab" data-bs-toggle="tab" href="#wallet"
+                                            role="tab" aria-controls="wallet" aria-selected="false"><i
+                                                class="fi-rs-money mr-10"></i>Wallet</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab"
+                                            href="#track-orders" role="tab" aria-controls="track-orders"
+                                            aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Track
+                                            Your Order</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address"
+                                            role="tab" aria-controls="address" aria-selected="true"><i
+                                                class="fi-rs-marker mr-10"></i>Address</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="shipping-address-tab" data-bs-toggle="tab"
+                                            href="#shipping-address" role="tab" aria-controls="shipping-address"
+                                            aria-selected="true"><i class="fi-rs-marker mr-10"></i>Add
+                                            Shipping
+                                            Address</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/user-logout"><i
+                                                class="fi-rs-sign-out mr-10"></i>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="tab-content dashboard-content">
+                                <div class="tab-pane fade active show" id="dashboard" role="tabpanel"
+                                    aria-labelledby="dashboard-tab">
+                                    <div class="card">
+                                        <div class="row">
+                                            {{!-- <div class="col-lg-4">
+                                                <div class="card mb-4">
+                                                    <div class="card-body text-center">
+                                                        <img src="/profileimages/{{userInfo.profilePhoto}}" alt="avatar"
+                                                            class="rounded-circle img-fluid"
+                                                            style="width: 130px; height: 130px;">
+
+                                                        <h5 class="my-3">John Smith</h5>
+
+                                                        <form action="/upload-profile-photo" method="post"
+                                                            enctype="multipart/form-data">
+                                                            <div class="mb-3">
+                                                                <label for="profilePhoto"
+                                                                    class="custom-file-label">Choose Photo</label>
+                                                                <input type="file" name="profilePhoto" id="profilePhoto"
+                                                                    class="custom-file-input" accept="image/*">
+                                                            </div>
+
+                                                            <button type="submit"
+                                                                class="btn-sm btn-outline-primary">Upload</button>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div> --}}
+                                            <div class="col-lg-4">
+                                                <div class="card mb-4">
+                                                    <div class="card-body text-center">
+                                                        <img src="/profileimages/{{userInfo.profilePhoto}}" alt="avatar"
+                                                            class="rounded-circle img-fluid"
+                                                            style="width: 130px; height: 130px;">
+                                                        <h5 class="my-3">{{userInfo.name}}</h5>
+
+                                                        <form id="profileUploader" enctype="multipart/form-data">
+                                                            <div class="mb-3 d-flex align-items-center">
+                                                                <div class="input-group">
+
+
+                                                                    <input type="file" name="profilePhoto"
+                                                                        id="profilePhoto"
+                                                                        class="form-control  form-control-sm"
+                                                                        accept="image/*">
+
+                                                                </div>
+                                                            </div><button id="cropImageBtn"
+                                                                class="btn btn-sm btn-outline-info"
+                                                                style="padding: 0;">Upload</button>
+
+                                                            <!-- Add a button to trigger image cropping -->
+
+                                                            <small>
+                                                                {{#if userInfo.profilePhoto}}
+                                                                Current photo: {{userInfo.profilePhoto}}
+                                                                {{else}}
+                                                                No photo chosen
+                                                                {{/if}}
+                                                            </small>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8" id="imagePreviewContainer" style="display: none;">
+                                                <img id="imagePreview" src="" alt="Image Preview"
+                                                    class="rounded-circle img-fluid"
+                                                    style="width: 130px; height: 130px;">
+                                            </div>
+                                            <div id="profileInformation" class="col-lg-8" style="display: block;">
+                                                <div class="card mb-4">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <p class="mb-0">Name</p>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <p class="text-muted mb-0">{{userInfo.name}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <p class="mb-0">Email</p>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <p class="text-muted mb-0">{{userInfo.userName}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <p class="mb-0">Phone</p>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <p class="text-muted mb-0">{{userInfo.phoneNumber}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <p class="mb-0">Address</p>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <p class="text-muted mb-0">Therthally, Alakode, kannur
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                {{!-- <span> <a class="btn btn-sm btn-outline-primary"
+                                                                        href="#collapse" data-bs-toggle="collapse"
+                                                                        data-toggle="collapse" aria-expanded="false"
+                                                                        aria-controls="collapse"><i
+                                                                            class="fi-rs-settings-sliders mr-10"></i>
+                                                                        Edit
+                                                                        Profile</a>
+                                                                </span> --}}
+                                                            </div>
+                                                        </div>
+                                                        {{!-- <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="collapse " id="collapse">
+                                                                    <form method="post" name="enq">
+                                                                        <div class="row pb-3">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label>Name <span
+                                                                                        class="required">*</span></label>
+                                                                                <input required="" class="form-control "
+                                                                                    name="name" type="text">
+                                                                            </div>
+                                                                            <div class="form-group col-md-6">
+                                                                                <label>Email Address <span
+                                                                                        class="required">*</span></label>
+                                                                                <input required="" class="form-control "
+                                                                                    name="email" type="email">
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label>Mobile <span
+                                                                                        class="required">*</span></label>
+                                                                                <input required="" class="form-control "
+                                                                                    name="phoneNumber" type="email">
+                                                                            </div>
+                                                                            <div class="col-md-4  mt-4 ml-5">
+                                                                                <button type="submit" class="btn-sm"
+                                                                                    name="submit"
+                                                                                    value="Submit">Save</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div> --}}
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+                                    <div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>Wallet</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <blockquote class="blockquote mb-0">
+                                                    <p>Total Wallet Balance</p>
+                                                    <div class="col-md-6">
+                                                        <span>₹<strong>
+                                                                {{walletAmount}}
+                                                            </strong></span>
+                                                    </div>
+                                                    <a href="#addToWallet" data-toggle="tab">
+                                                        <button class="Btn float-right font-sm">
+                                                            Money
+                                                            <svg class="svgIcon" viewBox="0 0 576 512">
+                                                                <path
+                                                                    d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </a>
+
+
+
+                                                    <div>
+
+                                                </blockquote>
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="card mt-10" style="overflow-y: auto; height:40vh">
+
+                                            <div class="card-body">
+                                                {{#each wallet.transactions}}
+                                                {{#ifCond this.type "credit"}}
+                                                <p class="fs-6 fw-2"> Amount Credited: <strong
+                                                        style="color: green;"> ₹ {{amount}}</strong></p>
+                                                <p> Credited At: {{dateFormat date}}</p>
+                                                {{else}}
+                                                <p class="fs-6 fw-2"> Amount Debited: <strong
+                                                        style="color: rgb(255, 0, 0);"> ₹ -{{amount}}</strong></p>
+                                                <p> Debited At: {{dateFormat date}}</p>
+                                                {{/ifCond}}
+                                                {{/each}}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                              
+                                </div>
+                                <div class="tab-pane fade" id="addToWallet" role="tabpanel"
+                                    aria-labelledby="walletCash-tab">
+                                    <form id="addMoneyForm">
+                                        <div class="form-group">
+                                            <label for="amount">Amount:</label>
+                                            <input type="number" class="form-control" id="amount" name="amount"
+                                                placeholder="Enter amount">
+                                        </div>
+                                        <button onclick="processPayment(event)" class="Btn float-right" type="submit">
+                                            Pay
+                                            <svg class="svgIcon" viewBox="0 0 576 512">
+                                                <path
+                                                    d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Your Orders</h5>
+                                        </div>
+                                        {{#if orderedProduct}}
+                                        <div class="card-body" style="max-height: 60vh; overflow-y: auto;">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Status</th>
+                                                            <th scope="col">Total</th>
+                                                            <th scope="col">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    {{#each orderedProduct}}
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{dateFormat this.created_at}}</td>
+                                                            <td>{{this.payment_status}}</td>
+                                                            <td>₹ {{this.totalAmount}}</td>
+                                                            <td><a href="/view-order-details?id={{this._id}}"
+                                                                    class="btn-small d-block">View</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    {{/each}}
+                                                </table>
+                                            </div>
+                                        </div>
+                                        {{else}}
+
+                                        <div class="mt-50 text-center mb-50">
+                                            <h4>You don't have any orders yet!</h4>
+                                            <a href="/shop" class="btn-sm btn btn-outline-info mt-10"> Go to shop</a>
+                                        </div>
+
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="track-orders" role="tabpanel"
+                                    aria-labelledby="track-orders-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Orders tracking</h5>
+                                        </div>
+                                        <div class="card-body contact-from-area">
+                                            <p>To track your order please enter your OrderID in the box below and
+                                                press
+                                                "Track" button</p>
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <form class="contact-form-style mt-30 mb-50" action="/track-order"
+                                                        method="post">
+                                                        <div class="input-style mb-20">
+                                                            <label>Order ID</label>
+                                                            <input name="order-id"
+                                                                placeholder="Found in your order confirmation email"
+                                                                type="text" class="square">
+                                                        </div>
+                                                        <button class="submit submit-auto-width"
+                                                            type="submit">Track</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="height:60vh; overflow-y:auto; overflow-x:hidden" class="tab-pane fade"
+                                    id="address" role="tabpanel" aria-labelledby="address-tab">
+                                    <div class="row">
+                                        <div class="card-header">
+                                            <h5>Shipping Address</h5>
+                                        </div>
+                                        {{#each shippingAddress}}
+                                        {{#each address}}
+                                        <div class="col-lg-6 mt-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    Name: {{name}} <br>
+                                                    <address>{{street_address}}<br>
+                                                        {{town}}, <br>{{state}} <br>Phone:
+                                                        {{phoneNumber}}
+                                                    </address>
+                                                    <p>{{location}}</p>
+                                                    <span class="mr-4">
+                                                        <a href="/edit-shipping-address?id={{_id}}">Edit</a></span>
+                                                    <span class="ml-5"><a
+                                                            onclick="addressRemove('{{../user_Id}}','{{_id}}')"
+                                                            class="btn-small">Delete</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                        {{/each}}
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="shipping-address" role="tabpanel"
+                                    aria-labelledby="shipping-address-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Add Shipping Address</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-12">
+                                                <form method="post" id="shopping-address-form">
+                                                    <div class="form-group">
+                                                        <input type="text" required="" name="name" placeholder="Name ">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input required="" type="text" name="email"
+                                                            placeholder="Email address ">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input required="" type="tel" name="phone"
+                                                            placeholder="10-digit mobile number">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="custom_select">
+                                                            <select class="form-control select-active" name="state">
+                                                                <option value="">Select an option...</option>
+                                                                <option value="Andaman &amp; Nicobar Islands">
+                                                                    Andaman
+                                                                    &amp; Nicobar Islands
+                                                                </option>
+                                                                <option value="Andhra Pradesh">Andhra Pradesh
+                                                                </option>
+                                                                <option value="Arunachal Pradesh">Arunachal Pradesh
+                                                                </option>
+                                                                <option value="Assam">Assam</option>
+                                                                <option value="Bihar">Bihar</option>
+                                                                <option value="Chandigarh">Chandigarh</option>
+                                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                                <option
+                                                                    value="Dadra &amp; Nagar Haveli &amp; Daman &amp; Diu">
+                                                                    Dadra &amp; Nagar
+                                                                    Haveli &amp; Daman &amp; Diu
+                                                                </option>
+                                                                <option value="Delhi">Delhi</option>
+                                                                <option value="Goa">Goa</option>
+                                                                <option value="Gujarat">Gujarat</option>
+                                                                <option value="Haryana">Haryana</option>
+                                                                <option value="Himachal Pradesh">Himachal Pradesh
+                                                                </option>
+                                                                <option value="Jammu &amp; Kashmir">Jammu &amp;
+                                                                    Kashmir
+                                                                </option>
+                                                                <option value="Jharkhand">Jharkhand</option>
+                                                                <option value="Karnataka">Karnataka</option>
+                                                                <option value="Kerala">Kerala</option>
+                                                                <option value="Ladakh">Ladakh</option>
+                                                                <option value="Lakshadweep">Lakshadweep</option>
+                                                                <option value="Madhya Pradesh">Madhya Pradesh
+                                                                </option>
+                                                                <option value="Maharashtra">Maharashtra</option>
+                                                                <option value="Manipur">Manipur</option>
+                                                                <option value="Meghalaya">Meghalaya</option>
+                                                                <option value="Mizoram">Mizoram</option>
+                                                                <option value="Nagaland">Nagaland</option>
+                                                                <option value="Odisha">Odisha</option>
+                                                                <option value="Puducherry">Puducherry</option>
+                                                                <option value="Punjab">Punjab</option>
+                                                                <option value="Rajasthan">Rajasthan</option>
+                                                                <option value="Sikkim">Sikkim</option>
+                                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                                <option value="Telangana">Telangana</option>
+                                                                <option value="Tripura">Tripura</option>
+                                                                <option value="Uttarakhand">Uttarakhand</option>
+                                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                                <option value="West Bengal">West Bengal</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" name="street_address" required=""
+                                                            placeholder="Address (area, street, pin-code)"></input>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input required="" type="text" name="city"
+                                                            placeholder="City / District / Town ">
+                                                    </div>
+                                                    <input type="text" value="{{userInfo._id}}" name="userId" id=""
+                                                        hidden>
+                                                    <button type="submit" onclick="" class="btn-sm">Submit</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://checkout.razorpay.com/v1/razorpay.js"></script>
+
+
+<script>
+    // Wait for the DOM to load
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageInput = document.getElementById('profilePhoto');
+        const imagePreview = document.getElementById('imagePreview');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const cropImageBtn = document.getElementById('cropImageBtn');
+        const profileinfo = document.getElementById('profileInformation');
+
+        let cropper;
+
+        imageInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+
+                imagePreview.src = event.target.result;
+                cropper = new Cropper(imagePreview, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                });
+
+                imagePreviewContainer.style.display = 'block';
+                profileinfo.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        cropImageBtn.addEventListener('click', function () {
+
+            const croppedCanvas = cropper.getCroppedCanvas();
+
+            const croppedDataURL = croppedCanvas.toDataURL('image/jpeg');
+            const croppedBlob = croppedCanvas.toBlob(function (blob) {
+
+                const formData = new FormData();
+                formData.append('profilePhoto', blob, 'cropped.jpg');
+                console.log(formData)
+                $.ajax({
+                    url: '/upload-profile-photo',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.status) {
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+            }, 'image/jpeg');
+        });
+    });
+
+
+
+
+    $("#shopping-address-form").submit((e) => {
+        e.preventDefault();
+        $.ajax({
+            url: '/add-shopping-address',
+            method: 'post',
+            data: $("#shopping-address-form").serialize(),
+            success: (response) => {
+                if (response.status) {
+                    location.reload()
+                }
+
+            }
+        })
+    })
+
+
+    function processPayment(event) {
+        event.preventDefault();
+
+        var amount = document.getElementById("amount").value;
+        Swal.fire({
+            title: 'This functionality is temporarily disabled',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+
+    }
+
+</script>
+
+
+<!-- Vendor JS-->
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="assets/js/plugins/slick.js"></script>
+<script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+<script src="assets/js/plugins/wow.js"></script>
+<script src="assets/js/plugins/jquery-ui.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.js"></script>
+<script src="assets/js/plugins/magnific-popup.js"></script>
+<script src="assets/js/plugins/select2.min.js"></script>
+<script src="assets/js/plugins/waypoints.js"></script>
+<script src="assets/js/plugins/counterup.js"></script>
+<script src="assets/js/plugins/jquery.countdown.min.js"></script>
+<script src="assets/js/plugins/images-loaded.js"></script>
+<script src="assets/js/plugins/isotope.js"></script>
+<script src="assets/js/plugins/scrollup.js"></script>
+<script src="assets/js/plugins/jquery.vticker-min.js"></script>
+<script src="assets/js/plugins/jquery.theia.sticky.js"></script>
+<!-- Template  JS -->
+<script src="assets/js/main.js"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/page-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:27:15 GMT -->
+
+</html>

@@ -1,0 +1,336 @@
+<style>
+    /* Custom styling for the header */
+
+    .sticky-bar {
+        height: 70px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .header-wrap {
+        height: 100%;
+        padding: 0 15px;
+    }
+
+    .my-logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .search-bar {
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+        width: 300px;
+    }
+
+    .search-bar button[type="submit"] {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        background-color: #fff;
+        border: none;
+        padding: 5px;
+        font-size: 1.25rem;
+        color: #888;
+    }
+
+    .header-nav {
+        align-items: center;
+    }
+
+    .main-menu {
+        margin-left: auto;
+    }
+
+    .group {
+        display: flex;
+        line-height: 28px;
+        align-items: center;
+        position: relative;
+        max-width: 190px;
+    }
+
+    .input {
+        width: 100%;
+        height: 40px;
+        line-height: 28px;
+        padding: 0 1rem;
+        padding-left: 2.5rem;
+        border: 2px solid transparent;
+        border-radius: 0, 8px, 8px, 0;
+        outline: none;
+        background-color: #fff;
+        color: #0d0c22;
+        transition: .3s ease;
+    }
+
+    .input::placeholder {
+        color: #9e9ea7;
+    }
+
+    .input:focus,
+    input:hover {
+        outline: none;
+        border-color: #E8F6EA;
+        background-color: #fff;
+        box-shadow: 0 0 0 4px rgba(188, 255, 255, 0.1);
+    }
+
+    .icon {
+        position: absolute;
+        left: 1rem;
+        fill: #9e9ea7;
+        width: 1rem;
+        height: 1rem;
+    }
+</style>
+
+{{!-- <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="text-center">
+                <h5 class="mb-10">Now Loading</h5>
+                <div class="loader">
+                    <div class="bar bar1"></div>
+                    <div class="bar bar2"></div>
+                    <div class="bar bar3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+
+
+
+
+<div class="row gx-4 mb-4 pt-3 card-header">
+    <form id="products-list-form">
+        <div class="row">
+        <div class="col-lg-3 col-md-3 ml-5 col">
+            <div class="row gx-3">
+                <div class="col-lg-8">
+                    <div class="input-group">
+                        <select id="sortBy" name="sortBy" class="form-select custom-select" style="background-color: #fff;">
+                            <option value="">Sort By</option>
+                            <option value="product_name">Name</option>
+                            <option value="product_price">Price</option>
+                        </select>
+                        <label class="input-group-text" for="inputGroupSelect">
+                            <i class="bi bi-sort-up"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col">
+            <div class="group">
+                <input placeholder="Search" name="searchKeyword" id="searchKeyword" type="search" class="input">
+            </div>
+        </div>
+
+
+        <div class="col-lg-3 col-md-3 col">
+            <div class="row gx-3 align-items-center">
+                <div class="col-lg-8">
+                    <div class="input-group">
+                        <select name="category" class="form-select custom-select" style="background-color: #fff;">
+                            <option value="">Select Category</option>
+                            {{#each categories}}
+                            <option value="{{this.category_name}}">{{this.category_name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 d-flex justify-content-center">
+        <button type="submit" class="btn btn-sm "> Find</button>
+
+        </div>
+        
+        </div>
+
+
+
+    </form>
+
+
+
+</div>
+<section class="product-tabs section-padding position-relative wow fadeIn animated"></section>
+<div class="bg-square"></div>
+
+<div class="container">
+    <!--End nav-tabs-->
+    <div class="tab-content wow fadeIn animated" id="myTabContent">
+        {{#if listedItems}}
+        <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
+            {{!-- <div class="row product-grid-4"> --}}
+                {{!-- <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                    <div class="product-cart-wrap mb-30">
+                        <div class="product-img-action-wrap">
+                            <div class="product-img product-img-zoom">
+                                <a href="{{productLink}}">
+                                    <img class="default-img" src="/uploads/{{this.product_image.[0]}}">
+                                    <img class="hover-img" src="/uploads/{{this.product_image.[1]}}">
+                                </a>
+                            </div>
+                            <div class="product-action-1">
+                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal"
+                                    data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                    onclick="addToWishList('{{this._id}}')"><i class="fi-rs-heart"></i></a>
+
+                            </div>
+                            <div class="product-badges product-badges-position product-badges-mrg">
+                                <span class="{{badgeClass}}">{{badgeText}}</span>
+                            </div>
+                        </div>
+                        <div class="product-content-wrap">
+                            <h2><a href="/product-view?id={{this._id}}">{{this.product_name}}</a></h2>
+                            <div class="product-price">
+                                <span>₹{{this.deal_price}}</span>
+                                <span class="old-price">{{this.product_price}}</span>
+                            </div>
+                            <div class="product-action-1 show">
+                                <button onclick="addToCart('{{this._id}}')" aria-label="Add To Cart"
+                                    class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="row product-grid-4" id="search-results">{{{listedItems}}}</div>
+                {{!--
+            </div> --}}
+        </div>
+        {{/if}}
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-10 mt-30">
+            {{#if message}}
+            <div class="alert alert-warning alert-dismissible fade  show text-center mx-auto" role="alert">
+                <strong>{{message.message}}</strong>
+                <button type="button" class=" btn-sm btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+</section>
+{{!--
+<script>
+    $("#search-item").submit((e) => {
+        let { generateResultsHTML } = require("../../helpers/userHelper")
+
+        e.preventDefault();
+        let searchKeyword = $('#searchItem').val().trim();
+        // Update the AJAX success function to use the generateResultsHTML function
+        $.ajax({
+            url: "/shop",
+            method: "get",
+            data: { search: searchKeyword },
+            success: function (response) {
+                let resultsHTML = generateResultsHTML(response);
+                $('#searchResults').html(resultsHTML);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    )
+
+    $(document).ready(function () {
+        let { generateResultsHTML } = require("../../helpers/userHelper")
+
+        $("#categorySort select[name='category']").change(function () {
+            console.log("this is just to know that i am entered or not ")
+
+            var category = $(this).val();
+            console.log(category, "category keyword")
+
+            if (category !== "") {
+                var url = "/shop?category=" + encodeURIComponent(category);
+                $.ajax({
+                    url: url,
+                    method: "get",
+                    success: function (response) {
+                        let resultsHTML = generateResultsHTML(response);
+                        $('#searchResults').html(resultsHTML);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        });
+    });
+
+</script> --}}
+
+<script>
+   let { resultsHTML } = require("../../helpers/userHelper");
+$("#products-list-form").submit((e) => {
+  e.preventDefault();
+  let searchKeyword = $('#searchItem').val().trim();
+  let category = $("#categorySort select[name='category']").val();
+  let sortBy = $("#sortBy").val();
+
+  let url = "/shop";
+
+  let hasQueryParams = false;
+
+  if (searchKeyword !== "") {
+    url += "?search=" + encodeURIComponent(searchKeyword);
+    hasQueryParams = true;
+  }
+
+  if (category !== "") {
+    url += (hasQueryParams ? "&" : "?") + "category=" + encodeURIComponent(category);
+    hasQueryParams = true;
+  }
+
+  if (sortBy !== "") {
+    url += (hasQueryParams ? "&" : "?") + "sort=" + encodeURIComponent(sortBy);
+  }
+
+  console.log(url);
+
+  // Send AJAX request
+  $.ajax({
+    url: url,
+    method: "get",
+    success: function (response) {
+      let resultsHTML = generateResultsHTML(response);
+      $('#searchResults').html(resultsHTML);
+    },
+    error: function (xhr, status, error) {
+      console.error(error);
+    }
+  });
+});
+
+
+
+
+
+
+
+</script>

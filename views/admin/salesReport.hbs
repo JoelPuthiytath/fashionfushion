@@ -1,0 +1,360 @@
+
+<style>
+.nav-tabs .nav-link.active{
+    
+    padding: 0.5rem 0.95rem;
+    font-weight: 500;
+    background-color: #088178;
+    color: #ffffff;
+    border : none;
+}
+</style>
+
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="/admin" class="brand-wrap">
+            <h4>FashionFusion</h4>
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+            </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-products"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/page-users"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/order-page"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addCategories"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Add Items</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/addCategories">Create Categories</a>
+                    <a href="/admin/addCoupon">Create Coupon</a>
+                    <a href="/admin/banner-creation">Create Banner</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/sales-report"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Sales Report</span> </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+<header class="main-wrap main-header navbar">
+    <div class="col-search">
+        <form class="searchform">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Shirts">
+                <option value="Pants">
+                <option value="Bags">
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                class="material-icons md-apps"></i> </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="#">
+                    <i class="material-icons md-notifications animation-shake"></i>
+                    <span class="badge rounded-pill">3</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false"> <img class="img-xs rounded-circle"
+                        src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/admin/admin-logout"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+<main class="main-wrap">
+    <section class="content-main">
+        <div class="card">
+            <div class="card-body">
+                {{#if render}}
+                <!-- Bordered Tabs Justified -->
+                <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustified" role="tablist">
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab"
+                            data-bs-target="#bordered-justified-home" type="button" role="tab" aria-controls="home"
+                            aria-selected="true">Daily Sales Report</button>
+                    </li>
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab"
+                            data-bs-target="#bordered-justified-profile" type="button" role="tab" aria-controls="profile"
+                            aria-selected="false">Monthly Sales Report</button>
+                    </li>
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#bordered-justified-contact" type="button" role="tab" aria-controls="contact"
+                            aria-selected="false">Yearly Sales Report</button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-2" id="borderedTabJustifiedContent">
+                    <div class="tab-pane fade show active" id="bordered-justified-home" role="tabpanel"
+                        aria-labelledby="home-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Table with hoverable rows -->
+                                <table class="table table-hover" id="dailyReport">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">userID</th>
+                                            <th scope="col">Total Amount</th>
+                                            <th scope="col">Payment Method</th>
+                                        </tr>
+                                    </thead>
+                                    <button class="btn btn-outline-danger mt-2 mb-2 ml-5" onclick="weeklySales()"><i class="bi bi-download"></i> Download PDF</button>
+                                    <button class="btn btn-outline-success mt-2 mb-2 ml-5" onclick="weeklySalesReport()"><i class="bi bi-download"></i> Download Excel</button>
+                                    <tbody>
+                                        {{#each weeklyReport}}
+                                        <tr>
+                                            <td class="tm-product-name">{{date}}</td>
+                                            <td class="tm-product-name">{{userId}}</td>
+                                            <td class="tm-product-name">₹{{total}}</td>
+                                            <td class="tm-product-name">{{paymentMethod}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        <tr>
+                                            <td style="font-weight: bolder;">Total sales amount: ₹{{weekTotal.[0].totalAmount}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- End Table with hoverable rows -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="bordered-justified-profile" role="tabpanel"
+                        aria-labelledby="profile-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Table with hoverable rows -->
+                                <table class="table table-hover" id="monthlyReport">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Month</th>
+                                            <th scope="col">userID</th>
+                                            <th scope="col">Total Amount</th>
+                                            <th scope="col">Payment Method</th>
+                                        </tr>
+                                    </thead>
+                                    <button class="btn btn-outline-danger mt-2 mb-2 ml-5" onclick="monthlySalesDownload()"><i class="bi bi-download"></i> Download PDF</button>
+                                    <button class="btn btn-outline-success mt-2 mb-2 ml-5" onclick="monthlyData()"><i class="bi bi-download"></i> Download Excel</button>
+                                    <tbody>
+                                        {{#each monthlySales}}
+                                        <tr>
+                                            <td class="tm-product-name">{{date}}</td>
+                                            <td class="tm-product-name">{{userId}}</td>
+                                            <td class="tm-product-name">₹{{total}}</td>
+                                            <td class="tm-product-name">{{paymentMethod}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        <tr>
+                                            <td style="font-weight: bolder;">Total sales amount: ₹{{monthTotal.[0].totalAmount}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- End Table with hoverable rows -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bordered-justified-contact" role="tabpanel"
+                        aria-labelledby="contact-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Table with hoverable rows -->
+                                <table class="table table-hover" id="yearlyReport">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Year</th>
+                                            <th scope="col">userID</th>
+                                            <th scope="col">Total Amount</th>
+                                            <th scope="col">Payment Method</th>
+                                        </tr>
+                                    </thead>
+                                    <button class="btn btn-outline-danger mt-2 mb-2 ml-5" onclick="yearlySalesDownload()"><i class="bi bi-download"></i> Download PDF</button>
+                                    <button class="btn btn-outline-success mt-2 mb-2 ml-5" onclick="yearlyData()"><i class="bi bi-download"></i> Download Excel</button>
+                                    <tbody>
+                                        {{#each yearlySales}}
+                                        <tr>
+                                            <td class="tm-product-name">{{date}}</td>
+                                            <td class="tm-product-name">{{userId}}</td>
+                                            <td class="tm-product-name">₹{{total}}</td>
+                                            <td class="tm-product-name">{{paymentMethod}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        <tr>
+                                            <td style="font-weight: bolder;">Total sales amount: ₹{{yearTotal.[0].totalAmount}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- End Table with hoverable rows -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Bordered Tabs Justified -->
+                {{else}}
+                <h1>No Sales</h1>
+                {{/if}}
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<!-- PDF AND EXCEL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+
+
+
+<script>
+
+function weeklySales() {
+  
+  const element = document.getElementById('dailyReport');
+  const heading = document.createElement('h1');
+  heading.textContent = 'Weekly Report';
+  const container = document.createElement('div');
+  container.appendChild(heading);
+  container.appendChild(element); 
+  container.style.margin = '20px';
+  html2pdf().from(container).save('sales-daily-report.pdf');
+}
+
+    function weeklySalesReport() {
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.table_to_sheet(document.querySelector('#dailyReport'));
+
+            // Adjust column widths
+            ws['!cols'] = [
+                { wch: 20 }, // Customer Name
+                { wch: 10 }, // Order ID
+                { wch: 20 }, // Product Name
+                { wch: 10 }, // Quantity
+                { wch: 15 }, // Unit Price
+                { wch: 15 }, // Total Price
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, "Daily Sales Report");
+
+            // Save the Excel file
+            XLSX.writeFile(wb, "sales-daily-report.xlsx");
+    }
+
+  function monthlySalesDownload(){
+       
+        const element = document.getElementById('monthlyReport');
+        const heading = document.createElement('h1');
+        heading.textContent = 'Monthly Report';
+        const container = document.createElement('div');
+        container.appendChild(heading);
+        container.appendChild(element);
+        container.style.margin = '20px';
+
+        html2pdf().from(container).save('sales-monthly-report.pdf');
+  }
+
+  function monthlyData() {
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.table_to_sheet(document.querySelector('#monthlyReport'));
+
+            // Adjust column widths
+            ws['!cols'] = [
+                { wch: 20 }, // Customer Name
+                { wch: 10 }, // Order ID
+                { wch: 20 }, // Product Name
+                { wch: 10 }, // Quantity
+                { wch: 15 }, // Unit Price
+                { wch: 15 }, // Total Price
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, "Month Sales Report");
+
+            // Save the Excel file
+            XLSX.writeFile(wb, "sales-monthly-report.xlsx");
+    }
+    function yearlySalesDownload(){
+       
+       const element = document.getElementById('yearlyReport');
+       const heading = document.createElement('h1');
+       heading.textContent = 'Yearly Report';
+       const container = document.createElement('div');
+       container.appendChild(heading);
+       container.appendChild(element);
+       container.style.margin = '20px';
+
+       html2pdf().from(container).save('sales-year-report.pdf');
+ }
+ function yearlyData() {
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.table_to_sheet(document.querySelector('#yearlyReport'));
+
+            // Adjust column widths
+            ws['!cols'] = [
+                { wch: 20 }, // Customer Name
+                { wch: 10 }, // Order ID
+                { wch: 20 }, // Product Name
+                { wch: 10 }, // Quantity
+                { wch: 15 }, // Unit Price
+                { wch: 15 }, // Total Price
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, "Year Sales Report");
+
+            // Save the Excel file
+            XLSX.writeFile(wb, "sales-yearly-report.xlsx");
+    }
+
+</script>
