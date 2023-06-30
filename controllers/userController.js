@@ -76,14 +76,15 @@ const verifyOtpPage = (req, res) => {
 };
 const verifyOtpPagePost = (req, res) => {
   console.log(req.session.mobile, "<= session mobile");
-  let mobile =
-    req.session.mobile !== undefined || null
+  let mobile =req.session.mobile !== undefined || null
       ? req.session.mobile
       : req.session.signUPTemp.phoneNumber;
   console.log(mobile, "<= final selection");
   const enteredCode = req.body.code;
+  console.log(enteredCode,"entered code")
 
-  if (enteredCode.length === 4 && mobile) {
+
+  if (enteredCode.length <= 6 && mobile) {
     client.verify.v2
       .services(verifySid)
       .verificationChecks.create({
