@@ -70,26 +70,60 @@
         text-decoration: none;
         color: inherit;
     }
-</style>
+    
+    .search-bar {
+        margin-top: 10px;
+        position: relative;
+    }
 
-<header>
+    .search-bar input[type="text"] {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+        width: 20vw;
+    }
+
+    .search-bar button[type="submit"] {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        padding: 5px;
+        font-size: 1.05rem;
+        color: #888;
+    }
+.search-bar button[type="submit"]:hover{
+  background-color: transparent;
+}
+
+</style>
+<header class="header-area header-style-1 header-height-2">
     <div class="sticky-bar" style="background-color: #fff; !important">
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
-                <div class="my-logo">
+                <div class="my-logo mt-20">
                     <h4>FashionFusion</h4>
                 </div>
-                <div class="search-bar">
-                    <form id="search-item">
-                        <input type="text" name="search" id="searchItem" placeholder="Search...">
-                        <button type="submit"><i class="fas fa-search"></i></button>
 
-                    </form>
-                </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
+                                <li>
+                                    <div class="search-bar">
+                                        <form id="search-item">
+                                            <input type="text" name="search" id="searchItem" placeholder="Search...">
+                                            <button type="submit" class="btn btn-sm"><i class="fas fa-search"></i></button>
+
+                                        </form>
+                                    </div>
+                                </li>
                                 <li class="menu-item">
                                     <a style="text-decoration: none;" class="menu-link" href="/">HOME</a>
                                 </li>
@@ -102,8 +136,8 @@
                                     </div>
                                 </li>
                                 <li class="dropdown nav-item">
-                                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
-                                        aria-expanded="false">
+                                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="/profile-view"
+                                        id="dropdownAccount" aria-expanded="false">
                                         {{#if user.profilePhoto}}
                                         <img class="img-xs rounded-circle" width="50px" height="50px"
                                             src="/profileimages/{{user.profilePhoto}}" alt="User">
@@ -118,11 +152,11 @@
                                                 class="material-icons md-perm_identity"></i>Profile</a>
                                         <a class="dropdown-item" href="/wishlist-page"><i
                                                 class="material-icons md-account_balance_wallet"></i>Wishlist</a>
-                                        <a class="dropdown-item" href="#"><i
+                                        {{!-- <a class="dropdown-item" href="#"><i
                                                 class="material-icons md-receipt"></i>Billing</a>
                                         <a class="dropdown-item" href="#"><i
                                                 class="material-icons md-help_outline"></i>Help center</a>
-                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-divider"></div> --}}
                                         <a class="dropdown-item text-danger" href="/user-logout"><i
                                                 class="material-icons md-exit_to_app"></i>Logout</a>
                                     </div>
@@ -136,36 +170,131 @@
                         </nav>
                     </div>
                 </div>
+                <div class="header-action-icon-2 d-block d-lg-none mt-30">
+                    <div class="burger-icon burger-icon-white">
+                        <span class="burger-icon-top"></span>
+                        <span class="burger-icon-mid"></span>
+                        <span class="burger-icon-bottom"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </header>
+<div class="mobile-header-active mobile-header-wrapper-style">
+    <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-top">
+            <div class="mobile-header-logo">
+                <h4>FashionFushion</h4>
+            </div>
+            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                <button class="close-style search-close">
+                    <i class="icon-top"></i>
+                    <i class="icon-bottom"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-header-content-area">
+            <div class="mobile-search search-style-3 mobile-header-border">
+                <form id="searchItem">
+                    <input type="text" name="search" id="searchItem" placeholder="Search for items…">
+                    <button type="submit"><i class="fi-rs-search"></i></button>
+                </form>
+            </div>
+            <div class="mobile-menu-wrap mobile-header-border">
+                <div class="main-categori-wrap mobile-header-border">
+                    <a class="categori-button-active-2" href="#">
+                        <span class="fi-rs-apps"></span> Browse Categories
+                    </a>
+                    <div class="categori-dropdown-wrap categori-dropdown-active-small">
+                        <ul>
+                            <li><a href="/shop?category=SHIRTS"><i class="evara-font-dress"></i>Shirts</a></li>
+                            <li><a href="/shop?category=PANTS"><i class="evara-font-tshirt"></i>Pants</a></li>
+                            <li> <a href="/shop?category=BAGS"><i class="evara-font-smartphone"></i> Bags</a></li>
+                            <li><a href="/shop?category=SHOES"><i class="evara-font-desktop"></i>Shoes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- mobile menu start -->
+                <nav>
+                    <ul class="mobile-menu">
+                        <li><span class="menu-expand"></span><a href="/">Home</a>
+                        </li>
+                        <li><span class="menu-expand"></span><a href="/shop">shop</a></li>
+                        <li><span class="menu-expand"></span><a href="/viewcart">Cart</a></li>
+                        <li><span class="menu-expand"></span><a href="/wishlist-page">Wishlist</a></li>
+
+                        <li><span class="menu-expand"></span><a href="/profile-view">Profile</a>
+                        </li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
+                            <ul class="dropdown">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">French</a></li>
+                                <li><a href="#">German</a></li>
+                                <li><a href="#">Spanish</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- mobile menu end -->
+            </div>
+            <div class="mobile-header-info-wrap mobile-header-border">
+                <div class="single-mobile-header-info">
+                    <a href="/user-login">Log In / Sign Up </a>
+                </div>
+                <div class="single-mobile-header-info">
+                    <a href="#">(+91) 9207_6328_ </a>
+                </div>
+            </div>
+            <div class="mobile-social-icon">
+                <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                <a href="https://m.facebook.com/joel.babl"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                <a href="twitter.com"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                <a href="https://www.instagram.com/f.r.a.n.k.e.n.s.t.e.i.n.z/?igshid=ZDc4ODBmNjlmNQ%3D%3D&__coig_restricted=1"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                <a href="pinterest.com"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                <a href="https://www.youtube.com/channel/UCux1ZU_jBcRI5gjlz2TZcBw"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchIcon = document.querySelector('.search-icon');
+        const searchInputContainer = document.querySelector('.search-input-container');
+
+        searchIcon.addEventListener('click', function () {
+            searchInputContainer.classList.toggle('show');
+        });
+    });
+
+</script>
 
 <script>
     let { generateResultsHTML } = require("../../helpers/userHelper");
 
     $("#search-item").submit((e) => {
-  e.preventDefault();
-  e.preventDefault();
-  let searchKeyword = $('#searchItem').val().trim();
-  let url = "/shop?search=" + encodeURIComponent(searchKeyword);
-  console.log(url)
+        e.preventDefault();
+        e.preventDefault();
+        let searchKeyword = $('#searchItem').val().trim();
+        let url = "/shop?search=" + encodeURIComponent(searchKeyword);
+        console.log(url)
 
-  console.log(url)
-  $.ajax({
-      url: url,
-      method: "get",
-      success: function (response) {
-          let resultsHTML = generateResultsHTML(response);
-          $('#searchResults').html(resultsHTML);
-      },
-      error: function (error) {
-          console.log(error);
-      }
-  });
+        console.log(url)
+        $.ajax({
+            url: url,
+            method: "get",
+            success: function (response) {
+                let resultsHTML = generateResultsHTML(response);
+                $('#searchResults').html(resultsHTML);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
 
-})
+    })
         // Send AJAX request
 
 </script>

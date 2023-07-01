@@ -1,19 +1,4 @@
 ﻿
-<div class="mobile-header-active mobile-header-wrapper-style">
-    <div class="mobile-header-wrapper-inner">
-        <div class="mobile-header-top">
-            <div class="mobile-header-logo">
-                <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
-            </div>
-            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
-                <button class="close-style search-close">
-                    <i class="icon-top"></i>
-                    <i class="icon-bottom"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
@@ -125,9 +110,7 @@
                                                 class="button button-add-to-cart">Add to
                                                 cart</button>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up"
-                                                href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                                 onclick="addToWishList('${item._id}')"><i class="fi-rs-heart"></i></a>
                                         </div>
                                     </div>
                                 </div>

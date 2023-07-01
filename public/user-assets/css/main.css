@@ -63,11 +63,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 thead {
   font-weight: 600;
 }
@@ -79,8 +75,6 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
-  margin-top: 0;
-  padding: 0;
 }
 
 ol, ul {
@@ -1502,9 +1496,6 @@ label {
   font-size: 13px;
   color: #1a1a1a;
   width: 100%;
-}
-a {
-  text-decoration: none;
 }
 
 .comment-form input:focus {

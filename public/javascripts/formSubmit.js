@@ -55,8 +55,3 @@ function verifyPayment(payment, order) {
     },
   });
 }
-
-function greeting (){
-  console.log("haiiii")
-  alert("ahiiii")
-}

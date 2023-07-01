@@ -21,7 +21,7 @@ const multer = require("multer");
 // const uri = require('./public/partials/uri');
 const db = process.env.DATABASE_LOCAL;
 mongoose
-  .connect(db,   
+  .connect(db,
     {
       useNewUrlParser:true,
       useUnifiedTopology:true,

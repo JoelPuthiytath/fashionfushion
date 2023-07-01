@@ -69,8 +69,6 @@ const generateResultsHTML = (items) => {
                           </a>
                       </div>
                       <div class="product-action-1">
-                          <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                           <a aria-label="Add To Wishlist" class="action-btn hover-up"
                               onclick="addToWishList('${item._id}')"><i class="fi-rs-heart"></i></a>
                       </div>

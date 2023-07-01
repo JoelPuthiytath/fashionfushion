@@ -530,9 +530,11 @@
         
     };
     sidebarSearch();
+    console.log("inside the main.js")
     
      /*====== Sidebar menu Active ======*/
     function mobileHeaderActive() {
+        console.log("this is happening")
         var navbarTrigger = $('.burger-icon'),
             endTrigger = $('.mobile-menu-close'),
             container = $('.mobile-header-active'),

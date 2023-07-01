@@ -21,32 +21,6 @@
         color: #333;
     }
 
-    .search-bar {
-        margin-top: 10px;
-        position: relative;
-    }
-
-    .search-bar input[type="text"] {
-        padding: 5px 10px;
-        border: none;
-        border-radius: 4px;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-        font-size: 1rem;
-        width: 300px;
-    }
-
-    .search-bar button[type="submit"] {
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        transform: translateY(-50%);
-        background-color: #fff;
-        border: none;
-        padding: 5px;
-        font-size: 1.25rem;
-        color: #888;
-    }
-
     .header-nav {
         align-items: center;
     }
@@ -107,14 +81,14 @@
                             </a>
                         </div>
                         <div class="product-action-1">
-                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal"
-                                data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                            {{!-- <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal"
+                                data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a> --}}
                             <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                onclick="addToWishList('${item._id}')"><i class="fi-rs-heart"></i></a>
+                                onclick="addToWishList('{{this._id}}')"><i class="fi-rs-heart"></i></a>
                         </div>
                     </div>
                     <div class="product-content-wrap">
-                        <h2><a href="/product-view?id=${item._id}">{{product_name}}</a></h2>
+                        <h2><a href="/product-view?id={{item._id}}">{{product_name}}</a></h2>
                         <div class="rating-result" title="${item.rating}%">
                             <span></span>
                         </div>
@@ -249,7 +223,7 @@
                         <div class="banner-text">
                             <span>Sale off</span>
                             <h4>Great Summer <br>Collection</h4>
-                            <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="/shop">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -259,7 +233,7 @@
                         <div class="banner-text">
                             <span>New Arrivals</span>
                             <h4>Shop Today’s <br>Deals & Offers</h4>
-                            <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="shop?sortBy=product_price">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

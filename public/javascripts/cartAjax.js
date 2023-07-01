@@ -1,7 +1,7 @@
 function addToCart(proId) {
   $.ajax({
     url: "/add-to-cart?id=" + proId,
-    method: "post",
+    method: "put",
     success: (response) => {
       if (response.status) {
         const Toast = Swal.mixin({
