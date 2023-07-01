@@ -1,77 +1,10 @@
-{{!-- <header>
-    <div class="sticky-bar">
-        <div class="container">
-            <div class="header-wrap header-space-between position-relative">
-                <div class="my-logo">
-                    <h4>FashionFusion</h4>
-                </div>
-                <div class="search-bar">
-                    <form id="search-product">
-                        <input type="text" name="search" id="searchInput" placeholder="Search...">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-                <div class="header-nav d-none d-lg-flex">
-                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
-                        <nav>
-                            <ul>
-                                <li class="menu-item">
-                                    <a class="menu-link" href="/">HOME</a>
-                                </li>
-                                {{#if userlogged}}
-                                <li>
-                                    <div class="cart-icon">
-                                        <a href="/viewcart"><i class="fas fa-shopping-cart"><span
-                                                    class="badge badge-light"
-                                                    id="cart-count">{{cartCount}}</span></i></a>
-                                    </div>
-                                </li>
-                                <li class="dropdown nav-item">
-                                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
-                                        aria-expanded="false">
-                                        {{#if user.profilePhoto}}
-                                        <img class="img-xs rounded-circle" width="50px" height="50px"
-                                            src="/profileimages/{{user.profilePhoto}}" alt="User">
-                                        {{else}}
-                                        <img class="img-xs rounded-circle" width="50px" height="50px"
-                                            src="/images/profile-pic.png" alt="User">
-                                        {{/if}}
 
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                                        <a class="dropdown-item" href="/profile-view"><i
-                                                class="material-icons md-perm_identity"></i>Profile</a>
-                                        <a class="dropdown-item" href="/wishlist-page"><i
-                                                class="material-icons md-account_balance_wallet"></i>Wishlist</a>
-                                        <a class="dropdown-item" href="#"><i
-                                                class="material-icons md-receipt"></i>Billing</a>
-                                        <a class="dropdown-item" href="#"><i
-                                                class="material-icons md-help_outline"></i>Help center</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="/user-logout"><i
-                                                class="material-icons md-exit_to_app"></i>Logout</a>
-                                    </div>
-                                </li>
-                                {{else}}
-                                <li>
-                                    <a href="/user-login">Login</a>
-                                </li>
-                                {{/if}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header> --}}
 <style>
     a {
         text-decoration: none;
         color: inherit;
     }
-    
-    .search-bar {
+        .search-bar {
         margin-top: 10px;
         position: relative;
     }
@@ -102,6 +35,7 @@
   background-color: transparent;
 }
 
+
 </style>
 <header class="header-area header-style-1 header-height-2">
     <div class="sticky-bar" style="background-color: #fff; !important">
@@ -119,7 +53,7 @@
                                     <div class="search-bar">
                                         <form id="search-item">
                                             <input type="text" name="search" id="searchItem" placeholder="Search...">
-                                            <button type="submit" class="btn btn-sm"><i class="fas fa-search"></i></button>
+                                            <button type="submit"><i class="fas fa-search"></i></button>
 
                                         </form>
                                     </div>
@@ -152,11 +86,6 @@
                                                 class="material-icons md-perm_identity"></i>Profile</a>
                                         <a class="dropdown-item" href="/wishlist-page"><i
                                                 class="material-icons md-account_balance_wallet"></i>Wishlist</a>
-                                        {{!-- <a class="dropdown-item" href="#"><i
-                                                class="material-icons md-receipt"></i>Billing</a>
-                                        <a class="dropdown-item" href="#"><i
-                                                class="material-icons md-help_outline"></i>Help center</a>
-                                        <div class="dropdown-divider"></div> --}}
                                         <a class="dropdown-item text-danger" href="/user-logout"><i
                                                 class="material-icons md-exit_to_app"></i>Logout</a>
                                     </div>
