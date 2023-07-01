@@ -17,26 +17,37 @@
         font-size: 1rem;
         width: 20vw;
     }
-
-    .search-bar button[type="submit"] {
+        .search-bar button[type="submit"] {
         position: absolute;
-        align-items: center;
-        justify-content: center;
         top: 50%;
         right: 5px;
+        height: 40px;
         transform: translateY(-50%);
         background-color: transparent;
         border: none;
-        padding: 5px;
         font-size: 1.05rem;
         color: #888;
     }
+
 .search-bar button[type="submit"]:hover{
   background-color: transparent;
 }
-
-
 </style>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/navStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+
+
 <header class="header-area header-style-1 header-height-2">
     <div class="sticky-bar" style="background-color: #fff; !important">
         <div class="container">
@@ -53,7 +64,7 @@
                                     <div class="search-bar">
                                         <form id="search-item">
                                             <input type="text" name="search" id="searchItem" placeholder="Search...">
-                                            <button type="submit"><i class="fas fa-search"></i></button>
+                                            <button class="btn btn-sm" type="submit"><i class="fas fa-search"></i></button>
 
                                         </form>
                                     </div>
