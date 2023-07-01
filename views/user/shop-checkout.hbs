@@ -506,6 +506,14 @@
                                 location.href = `/order-success-page?id=${response.orderId}`;
                             })
                         }
+                        else if(response.insufficentStock){
+                            console.log("herer")
+                                   Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: "Insufficent Stock",
+                            })
+                        }
                         else {
                          
                             razorpayPayment(response)

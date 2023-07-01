@@ -520,7 +520,11 @@ const orderPlace = async (req, res) => {
             res.json(response);
           });
       }
-    });
+    }).catch((resp)=>{
+      if(resp===false){
+        res.json({insufficentStock:true})
+      }
+    })
 };
 
 const paymentVerifycation = (req, res) => {

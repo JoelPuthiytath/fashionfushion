@@ -538,7 +538,7 @@ module.exports = {
           console.log(product.quantity, "this is product quantity")
           console.log("this is inventory quantity",inventory.quantity);
           if (!inventory || inventory.quantity < product.quantity) {
-            throw new Error(`Insufficient quantity for product: ${product.productId}`);
+            return reject(false)
           }
           inventory.quantity -= product.quantity;
           await inventory.save();

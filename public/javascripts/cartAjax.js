@@ -169,99 +169,6 @@ function addressRemove(userId, addressId) {
   });
 }
 
-// function changeStatus(orderId) {
-//   let value = document.getElementById("valueSelect").value;
-//   console.log(`value is ${value}`);
-//   $.ajax({
-//     url: "/changeOrderStatus",
-//     method: "patch",
-//     data: {
-//       orderId: orderId,
-//       statusValue: value,
-//     },
-//     success: (response) => {
-//       console.log(response);
-//     },
-//   });
-// }
-
-// $("#add-address-form").submit((e) => {
-//   e.preventDefault();
-//   $.ajax({
-//       url: '/add-shopping-address',
-//       method: 'post',
-//       data: $("#add-address-form").serialize(),
-//       success: (response) => {
-//           if (response.status) {
-//               location.reload()
-//           }
-
-//       }
-//   })
-
-// });
-
-// $("#coupon-selector-form").submit((e) => {
-//   e.preventDefault();
-//   $.ajax({
-//       url: "/select-coupon",
-//       method: "post",
-//       data: $("#coupon-selector-form").serialize(),
-//       success: (response) => {
-//           console.log(response)
-//           alert(response.couponDiscount);
-//           Swal.fire({
-//               position: "center",
-//               icon: response.icon,
-//               title: response.message,
-//               showConfirmButton: false,
-//               timer: 2000,
-//           }).then(() => {
-//               document.getElementById("couponDiscount").innerHTML = response.couponDiscount;
-//               document.getElementById("totalAmount").innerHTML = response.totalAmount;
-//               //document.querySelector(".coupon_form").style.display = "block";
-
-//           })
-//       },
-//   });
-// });
-
-// var addressInputs = document.querySelectorAll('input[name="address"]');
-
-// addressInputs.forEach(function (input) {
-//   input.addEventListener('click', function () {
-//       var selectedAddress = input.value;
-//       document.getElementById('selectedAddress').value = selectedAddress;
-//   });
-// });
-
-// $(document).ready(function () {
-//   $('#checkout-form').submit(function (event) {
-//       event.preventDefault();
-//       let couponCodeArray = $("#selectedCoupon").val()
-//       //let couponConde = couponCodeArray[1]
-//       let formData = $(this).serializeArray();
-//       formData.push({ name: "coupon", value: couponCodeArray })
-//       console.log(formData)
-
-//       $.ajax({
-//           type: 'POST',
-//           url: '/place-order',
-//           data: formData,
-//           success: function (response) {
-//               if (response.COD) {
-//                   location.href = `/order-success-page?id=${response._id}`;
-//               } else {
-//                   //razorpayPayment(response)
-//               }
-//           },
-//           error: function (xhr, status, error) {
-//           }
-//       });
-//   });
-// });
-
-
 $(document).ready(function () {
                 
   $('#checkout-form').submit(function (event) {
@@ -310,7 +217,7 @@ $(document).ready(function () {
                   })
               }
               else {
-                  console.log(respones,"this is the response")
+                  console.log(response,"this is the response")
                   razorpayPayment(response)
               }
           },
