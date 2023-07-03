@@ -49,7 +49,9 @@ const signupPagePost = (req, res) => {
 };
 
 const loginPage = (req, res) => {
+  console.log("inside the user login function")
   if (req.session.user) {
+    
     res.redirect("/");
   } else {
     res.render("../views/user/page-login.hbs");
@@ -239,6 +241,7 @@ const productView = async (req, res) => {
 };
 
 const addToCart = (req, res) => {
+  console.log("inside the addToCart controller",(req.body.proId))
   productHelper.addToCart(req.query.id, req.session.user._id).then(() => {
     res.json({ status: true });
   });

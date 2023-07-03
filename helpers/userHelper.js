@@ -1067,74 +1067,69 @@ module.exports = {
   },
 
 
-  listProducts: (req, res) => {
-    return new Promise(async (resolve, reject) => {
-      console.log(req.query);
-      console.log("up");
-      try {
-        let query = [
-          {
-            $lookup: {
-              from: "categories",
-              localField: "category",
-              foreignField: "_id",
-              as: "categories"
-            }
-          },
-          { $unwind: "$categories" }
-        ];
+  listProducts: async (req, res) => {
+    try {
+      let query = [
+        {
+          $lookup: {
+            from: "categories",
+            localField: "category",
+            foreignField: "_id",
+            as: "categories"
+          }
+        },
+        { $unwind: "$categories" }
+      ];
   
-        console.log(query);
-  
-        if (req.query.searchKeyword && req.query.searchKeyword !== "") {
-          query.push({
-            $match: {
-              $or: [
-                {
-                  product_name: { $regex: req.query.searchKeyword, $options: "i" }
-                }
-              ]
-            }
-          });
-        }
-  
-        if (req.query.category && req.query.category !== "") {
-          query.push({
-            $match: { "categories.category_name": req.query.category }
-          });
-        }
-  
-        let sortField = req.query.sortBy;
-        let sortQuery = {};
-  
-        if (sortField === "product_name") {
-          sortQuery = { "categories.category_name": 1, product_name: 1 };
-        } else if (sortField === "product_price") {
-          sortQuery = { "categories.category_name": 1, product_price: 1 };
-        }
-  
-        if (Object.keys(sortQuery).length > 0) {
-          query.push({ $sort: sortQuery });
-        }
-  
-        let shopItems = await productsSchema.aggregate(query);
-  
-        if (shopItems.length < 1) {
-          req.session.message = {
-            type: 'error',
-            message: "Oops! We couldn't find any products matching the identifier you provided"
-          };
-          res.redirect('/');
-        }
-  
-        console.log("Entered into the shop page", shopItems);
-        let resultsHTML = generateResultsHTML(shopItems);
-        resolve(resultsHTML);
-      } catch (error) {
-        reject(error);
+      if (req.query.searchKeyword && req.query.searchKeyword !== "") {
+        query.push({
+          $match: {
+            $or: [
+              {
+                product_name: { $regex: req.query.searchKeyword, $options: "i" }
+              }
+            ]
+          }
+        });
       }
-    });
-  },
+  
+      if (req.query.category && req.query.category !== "") {
+        query.push({
+          $match: { "categories.category_name": req.query.category }
+        });
+      }
+  
+      let sortField = req.query.sortBy;
+      let sortQuery = {};
+  
+      if (sortField === "product_name") {
+        sortQuery = { "categories.category_name": 1, product_name: 1 };
+      } else if (sortField === "product_price") {
+        sortQuery = { "categories.category_name": 1, product_price: 1 };
+      }
+  
+      if (Object.keys(sortQuery).length > 0) {
+        query.push({ $sort: sortQuery });
+      }
+  
+      let shopItems = await productsSchema.aggregate(query);
+  
+      if (shopItems.length < 1) {
+        req.session.message = {
+          type: 'error',
+          message: "Oops! We couldn't find any products matching the identifier you provided"
+        };
+        res.redirect('/');
+        return; // Add return here to exit the function
+      }
+  
+      console.log("Entered into the shop page", shopItems);
+      let resultsHTML = generateResultsHTML(shopItems);
+      return resultsHTML; // Add return here to return the value
+    } catch (error) {
+      throw error;
+    }
+  },  
 
   walletPayment: async (req, res, totalAmount) => {
     let userId = req.session.user._id;

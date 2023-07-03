@@ -199,7 +199,8 @@
 
 
 <script>
-   let { resultsHTML } = require("../../helpers/userHelper");
+
+//let { resultsHTML } = require("../../helpers/userHelper");
 $("#products-list-form").submit((e) => {
   e.preventDefault();
   let searchKeyword = $('#searchItem').val().trim();
@@ -230,8 +231,8 @@ $("#products-list-form").submit((e) => {
   $.ajax({
     url: url,
     method: "get",
-    success: function (response) {
-      let resultsHTML = generateResultsHTML(response);
+    success: async function (response) {
+      let resultsHTML = await generateResultsHTML(response);
       $('#searchResults').html(resultsHTML);
     },
     error: function (xhr, status, error) {
@@ -239,12 +240,6 @@ $("#products-list-form").submit((e) => {
     }
   });
 });
-
-
-
-
-
-
 
 </script>
 </body>

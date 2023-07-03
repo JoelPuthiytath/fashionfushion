@@ -4,8 +4,13 @@ const userVerify = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.redirect("/user-login");
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.status(401).json({ redirect: "/user-login" });
+    } else {
+      res.redirect("/user-login");
+    }
   }
+  
 };
 const adminVerify = (req, res, next) => {
   if (req.session.admin) {

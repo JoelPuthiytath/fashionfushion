@@ -1,8 +1,10 @@
 function addToCart(proId) {
+  console.log("i am inside th add to cart funciton")
   $.ajax({
     url: "/add-to-cart?id=" + proId,
-    method: "put",
+    method: "patch",
     success: (response) => {
+      console.log("i got the response",response)
       if (response.status) {
         const Toast = Swal.mixin({
           toast: true,
@@ -18,6 +20,11 @@ function addToCart(proId) {
           icon: "success",
           title: "added to cart successfully",
         });
+      }
+    },
+    error: (xhr) => {
+      if (xhr.status === 401 && xhr.responseJSON.redirect) {
+        window.location.href = xhr.responseJSON.redirect;
       }
     },
   });

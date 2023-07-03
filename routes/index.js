@@ -74,9 +74,10 @@ router.get("/product-view", middleware.setNoCache, userController.productView);
 
 // add to cart and wishlist
 
-router.put(
+router.patch(
   "/add-to-cart",
-  middleware.setNoCache,middleware.userVerify,
+  middleware.setNoCache,
+  middleware.userVerify,
   userController.addToCart
 );
 router.post(

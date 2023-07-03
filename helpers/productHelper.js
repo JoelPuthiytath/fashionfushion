@@ -332,6 +332,7 @@ module.exports = {
           };
           await cartSchema.create(cartObj);
         }
+        console.log("product added to the cart")
         resolve();
       } catch (error) {
         reject(error);
